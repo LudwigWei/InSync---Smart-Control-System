@@ -70,18 +70,33 @@ Thank you for contributing to the success of **InSync**!
       <h3>PROJECT MANAGER</h3>
       <p><strong>Louis Vincent A. Crisaldo</strong></p>
       <p>Oversees the project and coordinates<br> the development. Works on both frontend and backend tasks to integrate systems and ensure a seamless user experience.</p>
+      <p><strong>Contact:</strong></p>
+      <ul style="list-style: none; padding: 0;">
+        <li>22-00717@g.batstate-u.edu.ph</li>
+        <li>GitHub: <a href="https://github.com/LudwigWei" target="_blank">LudwigWei</a></li>
+      </ul>
     </td>
 
   <td style="border: 1px solid #ccc; border-radius: 10px; padding: 20px; vertical-align: top; width: 33.33%;">
       <h3>FRONTEND DEVELOPER</h3>
       <p><strong>Christian Kriel M. Quejada</strong></p>
       <p>Responsible for designing and<br>implementing the user interface (UI) and user experience (UX), ensuring the platform is responsive and visually appealing across devices.</p>
+     <p><strong>Contact:</strong></p>
+      <ul style="list-style: none; padding: 0;">
+        <li>22-05358@g.batstate-u.edu.ph</li>
+        <li>GitHub: <a href="https://github.com/kary3l" target="_blank">kary3l</a></li>
+      </ul>
     </td>
 
   <td style="border: 1px solid #ccc; border-radius: 10px; padding: 20px; vertical-align: top; width: 33.33%;">
       <h3>BACKEND DEVELOPER</h3>
       <p><strong>Jeroein Lloyd P. Magno</strong></p>
-      <p>Handles server-side logic, database<br>management, builds APIs, optimizes performance, ensures system reliability, and implements scalable solutions for efficient data handling and processing</p>
+      <p>Handles server-side logic, database<br>management, builds APIs, optimizes performance, ensures system reliability, and implements scalable solutions for efficient data handling and processing.</p>
+     <p><strong>Contact:</strong></p>
+      <ul style="list-style: none; padding: 0;">
+        <li>22-04009@g.batstate-u.edu.ph</li>
+        <li>GitHub: <a href="https://github.com/JeroeinMagno" target="_blank">JeroeinMagno</a></li>
+      </ul>
     </td>
   </tr>
 </table>
