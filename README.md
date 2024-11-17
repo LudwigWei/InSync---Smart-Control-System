@@ -11,12 +11,10 @@
 ## TABLE OF CONTENTS
 1.  [About the Project](#about-the-project)
 2.  [Key Features](#key-features)
-3.  [Installation](#installation)
 4.  [Usage](#usage)
 5.  [Technologies Used](#technologies-used)
 6.  [Screenshots](#screenshots)
 7.  [Contributing](#contributing)
-8.  [License](#license)
 9.  [About The Developers](#about-the-developers)
 
 ## About the Project
