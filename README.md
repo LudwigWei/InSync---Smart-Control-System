@@ -65,37 +65,46 @@ Thank you for contributing to the success of **InSync**!
 
 ## About the Developers
 
-<table style="width: 100%; text-align: center; border-collapse: collapse;">
+<table style="width: 100%; text-align: center; border-collapse: collapse; table-layout: fixed;">
   <tr>
+    <!-- Project Manager -->
     <td style="border: 1px solid #ccc; border-radius: 10px; padding: 20px; width: 33%; vertical-align: top;">
-      <img src="assets/your-photo.jpg" alt="Project Manager" style="width: 100px; height: 100px; border-radius: 50%; object-fit: cover; margin-bottom: 10px;">
-      <h3>Project Manager / Full Stack Developer</h3>
-      <p><strong>[Your Name]</strong></p>
-      <p>Oversees the project and coordinates the development. Works on both frontend and backend tasks to integrate systems and ensure a seamless user experience.</p>
-      <ul style="list-style: none; padding: 0;">
-        <li><strong>Responsibilities:</strong> Project management, Full-stack development</li>
-        <li><strong>Key Contributions:</strong> System architecture, API design</li>
-      </ul>
+      <div style="text-align: center;">
+        <h3>Project Manager</h3>
+        <p><strong>[Your Name]</strong></p>
+        <p>Oversees the project and coordinates the development. Works on both frontend and backend tasks to integrate systems and ensure a seamless user experience.</p>
+        <ul style="list-style: none; padding: 0;">
+          <li><strong>Responsibilities:</strong> Project management, Full-stack development</li>
+          <li><strong>Key Contributions:</strong> System architecture, API design</li>
+        </ul>
+      </div>
     </td>
-    <td style="border: 1px solid #ccc; border-radius: 10px; padding: 20px; width: 33%; vertical-align: top;">
-      <img src="assets/frontend-photo.jpg" alt="Frontend Developer" style="width: 100px; height: 100px; border-radius: 50%; object-fit: cover; margin-bottom: 10px;">
-      <h3>Frontend Developer</h3>
-      <p><strong>[Frontend Developer's Name]</strong></p>
-      <p>Responsible for creating an appealing and responsive UI/UX for the platform, ensuring it's user-friendly on all devices.</p>
-      <ul style="list-style: none; padding: 0;">
-        <li><strong>Responsibilities:</strong> Designing the frontend, UI components</li>
-        <li><strong>Key Contributions:</strong> Dashboard layout, mobile responsiveness</li>
-      </ul>
+
+    <!-- Frontend Developer -->
+   <td style="border: 1px solid #ccc; border-radius: 10px; padding: 20px; width: 33%; vertical-align: top;">
+      <div style="text-align: center;">
+        <h3>Frontend Developer</h3>
+        <p><strong>[Frontend Developer's Name]</strong></p>
+        <p>Responsible for creating an appealing and responsive UI/UX for the platform, ensuring it's user-friendly on all devices.</p>
+        <ul style="list-style: none; padding: 0;">
+          <li><strong>Responsibilities:</strong> Designing the frontend, UI components</li>
+          <li><strong>Key Contributions:</strong> Dashboard layout, mobile responsiveness</li>
+        </ul>
+      </div>
     </td>
-    <td style="border: 1px solid #ccc; border-radius: 10px; padding: 20px; width: 33%; vertical-align: top;">
-      <img src="assets/backend-photo.jpg" alt="Backend Developer" style="width: 100px; height: 100px; border-radius: 50%; object-fit: cover; margin-bottom: 10px;">
-      <h3>Backend Developer</h3>
-      <p><strong>[Backend Developer's Name]</strong></p>
-      <p>Handles server-side logic, manages the database, and builds APIs to ensure a reliable and scalable platform.</p>
-      <ul style="list-style: none; padding: 0;">
-        <li><strong>Responsibilities:</strong> Backend development, database management</li>
-        <li><strong>Key Contributions:</strong> API development, server-side logic</li>
-      </ul>
+
+    <!-- Backend Developer -->
+  <td style="border: 1px solid #ccc; border-radius: 10px; padding: 20px; width: 33%; vertical-align: top;">
+      <div style="text-align: center;">
+        <h3>Backend Developer</h3>
+        <p><strong>[Backend Developer's Name]</strong></p>
+        <p>Handles server-side logic, manages the database, and builds APIs to ensure a reliable and scalable platform.</p>
+        <ul style="list-style: none; padding: 0;">
+          <li><strong>Responsibilities:</strong> Backend development, database management</li>
+          <li><strong>Key Contributions:</strong> API development, server-side logic</li>
+        </ul>
+      </div>
     </td>
   </tr>
 </table>
+
