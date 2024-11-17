@@ -62,48 +62,26 @@ Your feedback is invaluable in making **InSync - Smart Control System** better, 
 
 Thank you for contributing to the success of **InSync**!
 
-
 ## About the Developers
 
 <table style="width: 100%; text-align: center; border-collapse: collapse; table-layout: fixed;">
   <tr>
-    <!-- Project Manager -->
-    <td style="border: 1px solid #ccc; border-radius: 10px; padding: 20px; width: 33%; vertical-align: top;">
-      <div style="text-align: center;">
-        <h3>Project Manager</h3>
-        <p><strong>[Your Name]</strong></p>
-        <p>Oversees the project and coordinates the development. Works on both frontend and backend tasks to integrate systems and ensure a seamless user experience.</p>
-        <ul style="list-style: none; padding: 0;">
-          <li><strong>Responsibilities:</strong> Project management, Full-stack development</li>
-          <li><strong>Key Contributions:</strong> System architecture, API design</li>
-        </ul>
-      </div>
+    <td style="border: 1px solid #ccc; border-radius: 10px; vertical-align: top; width: 33.33%;">
+      <h3>PROJECT MANAGER</h3>
+      <p><strong>Louis Vincent A. Crisaldo</strong></p>
+      <p>Oversees the project and coordinates<br> the development. Works on both frontend and backend tasks to integrate systems and ensure a seamless user experience.</p>
     </td>
 
-    <!-- Frontend Developer -->
-   <td style="border: 1px solid #ccc; border-radius: 10px; padding: 20px; width: 33%; vertical-align: top;">
-      <div style="text-align: center;">
-        <h3>Frontend Developer</h3>
-        <p><strong>[Frontend Developer's Name]</strong></p>
-        <p>Responsible for creating an appealing and responsive UI/UX for the platform, ensuring it's user-friendly on all devices.</p>
-        <ul style="list-style: none; padding: 0;">
-          <li><strong>Responsibilities:</strong> Designing the frontend, UI components</li>
-          <li><strong>Key Contributions:</strong> Dashboard layout, mobile responsiveness</li>
-        </ul>
-      </div>
+  <td style="border: 1px solid #ccc; border-radius: 10px; padding: 20px; vertical-align: top; width: 33.33%;">
+      <h3>FRONTEND DEVELOPER</h3>
+      <p><strong>Christian Kriel M. Quejada</strong></p>
+      <p>Responsible for designing and<br>implementing the user interface (UI) and user experience (UX), ensuring the platform is responsive and visually appealing across devices.</p>
     </td>
 
-    <!-- Backend Developer -->
-  <td style="border: 1px solid #ccc; border-radius: 10px; padding: 20px; width: 33%; vertical-align: top;">
-      <div style="text-align: center;">
-        <h3>Backend Developer</h3>
-        <p><strong>[Backend Developer's Name]</strong></p>
-        <p>Handles server-side logic, manages the database, and builds APIs to ensure a reliable and scalable platform.</p>
-        <ul style="list-style: none; padding: 0;">
-          <li><strong>Responsibilities:</strong> Backend development, database management</li>
-          <li><strong>Key Contributions:</strong> API development, server-side logic</li>
-        </ul>
-      </div>
+  <td style="border: 1px solid #ccc; border-radius: 10px; padding: 20px; vertical-align: top; width: 33.33%;">
+      <h3>BACKEND DEVELOPER</h3>
+      <p><strong>Jeroein Lloyd P. Magno</strong></p>
+      <p>Handles server-side logic, database<br>management, builds APIs, optimizes performance, ensures system reliability, and implements scalable solutions for efficient data handling and processing</p>
     </td>
   </tr>
 </table>
