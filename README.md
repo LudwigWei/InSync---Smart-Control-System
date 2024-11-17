@@ -38,26 +38,15 @@
 
 ## Contributing
 
-We welcome contributions to the **InSync - Smart Control System**! Whether you're fixing bugs, suggesting new features, or improving documentation, your input is highly valued.
+We welcome contributions to **InSync - Smart Control System**! Whether you’re fixing bugs, suggesting features, or improving documentation, your contributions are highly valued.
 
 ### How to Contribute:
-
-1. **Fork the Repository**: Start by forking the project to your GitHub account. You can fork it from [here](https://github.com/LudwigWei/InSync---Smart-Control-System).
-2. **Clone Your Fork**: Clone your fork to your local machine to work on it.
-   ```bash
-   git clone https://github.com/your-username/InSync---Smart-Control-System.git
-3. **Create a Branch**: Create a new branch for your feature or fix.
-    ```bash
-   git checkout -b feature/your-feature-name
-4. **Make Changes**: Make your changes and commit them with clear, concise commit messages.
-   ```bash
-   git commit -m "Describe your changes"
-5. **Push Changes**: Push your branch to your forked repository.
-   ```bash
-   git push origin feature/your-feature-name
-6. **Submit a Pull Request**: Open a pull request with a detailed description of your changes.
-    ```bash
-   git push origin feature/your-feature-name
+1. **Fork the Repository**: Fork the project to your GitHub account.
+2. **Clone Your Fork**: Clone it to your local machine.
+3. **Create a Branch**: Create a new branch for your changes.
+4. **Make Changes**: Make and commit your changes.
+5. **Push Changes**: Push your branch to your fork.
+6. **Open a Pull Request**: Submit a pull request with a detailed description of your changes.
 
 ### Code of Conduct
 
