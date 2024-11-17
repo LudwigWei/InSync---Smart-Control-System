@@ -17,10 +17,35 @@
 6.  [Screenshots](#screenshots)
 7.  [Contributing](#contributing)
 8.  [License](#license)
-9.  [Contact](#contact)
+9.  [About The Developers](#about-the-developers)
 
 ## About the Project
 <strong>InSync - Smart Control System</strong> is an intuitive platform that allows users to efficiently manageis there  and monitor smart home devices through a web interface. It supports a wide range of connected devices, including lighting, door locks, climate control, and air quality sensors. With its focus on ease of use and responsive design, InSync offers real-time device control, automation, and a seamless smart home experience, making it easier for users to integrate and manage their connected environment.
+
+## Key Features
+
+## Usage
+- test pa lang
+- Open the dashboard by navigating to ``.
+- Sign up for an account or log in.
+- Use the main navigation menu to access different sections (Lighting, Climate, Security, etc.).
+- Configure devices by selecting options from each section.
+
+## Technologies Used
+
+## Screenshots
+- test pa lang
+![Dashboard](screenshots/dashboard.png)
+![Lighting Control](screenshots/lighting-control.png)
+
+## Contributing
+
+## About the Developers
+
+
+
+
+
 
 
 
