@@ -15,7 +15,6 @@ html, body{
     background: #E5DCD7;
 }
 
-
 /* info for items */
 
 .item .info-box{
@@ -95,7 +94,6 @@ html, body{
     z-index: 10;
     rotate: 10deg; 
 }
-
 
 .item .img-box{
     position: absolute;
@@ -184,8 +182,6 @@ html, body{
         -2px -2px 8px rgba(255, 255, 255, 0.9); /* Highlight on hover */
     transform: translateY(-2px); /* Lift effect on hover */
 }
-
-
 
 /* Circle Background */
 .circle-bg {
@@ -289,8 +285,6 @@ html, body{
     transition: transform 0.3s ease, background-color 0.3s ease;
 }
 
-
-
 /* Modal for user information */
 .modal1 {
     display: none; /* Initially hidden */
@@ -385,23 +379,13 @@ html, body{
     display: block;
 }
 
-
-
-
-
-
 /* Testing */
 .menu li.highlight {
     background-color: #2c393b; /* Highlight color for the selected button */
     color: #fff; /* Change text color if needed */
 }
 
-
-
-
-
 /* boxes in the modal for dashboard */
-
 
 /* Container styles */
 .grid-container {
@@ -432,6 +416,11 @@ html, body{
 .large-box-1 {
     width: 55%;  /* Adjust width for the first large box */
     height: 250px; /* Adjust height for the first large box */
+}
+
+#chartCanvas {
+    width: 100%;
+    height: 100%;
 }
 
 .large-box-2 {
@@ -487,8 +476,6 @@ html, body{
     
     transition: all 0.3s ease-in-out;
 }
-
-
 
 /* Align items horizontally in the box */
 .box-content {
@@ -556,4 +543,45 @@ html, body{
 
 .container input:checked + .moving_circle::after {
     transform: translateX(20px); /* Move the circle to the right */
+}
+
+@media (max-width: 768px) {
+    .item .info-box {
+        width: 80%;
+        left: 10%;
+        height: auto;
+    }
+    .info-item h2 {
+        font-size: 50px;
+    }
+    .info-item p {
+        font-size: 20px;
+    }
+    .item .img-box {
+        width: 90%;
+        left: 5%;
+    }
+    .menu li {
+        width: 50px;
+        height: 50px;
+    }
+    .menu li i {
+        font-size: 20px;
+    }
+    .circle-bg {
+        width: 400px;
+        height: 400px;
+    }
+}
+
+#dateTime {
+    font-family: 'Roboto', sans-serif;
+    font-weight: bold;
+    color: #eee;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 20px;
+    padding: 5px;
+    border-radius: 5px;
 }

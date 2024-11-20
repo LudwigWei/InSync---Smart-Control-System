@@ -162,91 +162,95 @@ function updateCarousel() {
     });
 }
 
-// Add event listeners to all menu buttons
-menuButtons.forEach((button) => {
-    button.addEventListener("click", () => {
-        if (button !== next) { // Check if the clicked button is not "next"
-            highlightButton(button); // Highlight the clicked button
-            resetNextButtonColor(); // Ensure next button is reset when another button is clicked
+document.addEventListener("DOMContentLoaded", function() {
+    // Ensure the modal is hidden on page load
+    modal.style.display = "none";
+    modal1.style.display = "none";
+
+    // Add event listeners to all menu buttons
+    menuButtons.forEach((button) => {
+        button.addEventListener("click", () => {
+            if (button !== next) { // Check if the clicked button is not "next"
+                highlightButton(button); // Highlight the clicked button
+                resetNextButtonColor(); // Ensure next button is reset when another button is clicked
+            }
+        });
+    });
+
+    // Event listeners for the on/off toggle switches
+    lampSwitch.addEventListener("change", (e) => {
+        const lampLabel = lampSwitch.closest('.lamp-switch').querySelector('.label'); // Find label in lamp-switch container
+        if (e.target.checked) {
+            console.log("Smart Lamp ON");
+            lampLabel.textContent = "Lamp: ON"; // Update label to show it's ON
+            lampSwitch.closest('.lamp-switch').style.backgroundColor = "#00ff00"; // Green background for ON state
+        } else {
+            console.log("Smart Lamp OFF");
+            lampLabel.textContent = "Lamp: OFF"; // Update label to show it's OFF
+            lampSwitch.closest('.lamp-switch').style.backgroundColor = "#ff0000"; // Red background for OFF state
         }
     });
-});
 
-// Event listeners for the on/off toggle switches
-lampSwitch.addEventListener("change", (e) => {
-    const lampLabel = lampSwitch.closest('.lamp-switch').querySelector('.label'); // Find label in lamp-switch container
-    if (e.target.checked) {
-        console.log("Smart Lamp ON");
-        lampLabel.textContent = "Lamp: ON"; // Update label to show it's ON
-        lampSwitch.closest('.lamp-switch').style.backgroundColor = "#00ff00"; // Green background for ON state
-    } else {
-        console.log("Smart Lamp OFF");
-        lampLabel.textContent = "Lamp: OFF"; // Update label to show it's OFF
-        lampSwitch.closest('.lamp-switch').style.backgroundColor = "#ff0000"; // Red background for OFF state
+    fanSwitch.addEventListener("change", (e) => {
+        const fanLabel = fanSwitch.closest('.fan-switch').querySelector('.label'); // Find label in fan-switch container
+        if (e.target.checked) {
+            console.log("Smart Fan ON");
+            fanLabel.textContent = "Fan: ON"; // Update label to show it's ON
+            fanSwitch.closest('.fan-switch').style.backgroundColor = "#00ff00"; // Green background for ON state
+        } else {
+            console.log("Smart Fan OFF");
+            fanLabel.textContent = "Fan: OFF"; // Update label to show it's OFF
+            fanSwitch.closest('.fan-switch').style.backgroundColor = "#ff0000"; // Red background for OFF state
+        }
+    });
+
+    speakerSwitch.addEventListener("change", (e) => {
+        const speakerLabel = speakerSwitch.closest('.speaker-switch').querySelector('.label'); // Find label in speaker-switch container
+        if (e.target.checked) {
+            console.log("Smart Speaker ON");
+            speakerLabel.textContent = "Speaker: ON"; // Update label to show it's ON
+            speakerSwitch.closest('.speaker-switch').style.backgroundColor = "#00ff00"; // Green background for ON state
+        } else {
+            console.log("Smart Speaker OFF");
+            speakerLabel.textContent = "Speaker: OFF"; // Update label to show it's OFF
+            speakerSwitch.closest('.speaker-switch').style.backgroundColor = "#ff0000"; // Red background for OFF state
+        }
+    });
+
+    thermometerSwitch.addEventListener("change", (e) => {
+        const thermometerLabel = thermometerSwitch.closest('.thermometer-switch').querySelector('.label'); // Find label in thermometer-switch container
+        if (e.target.checked) {
+            console.log("Thermometer ON");
+            thermometerLabel.textContent = "Thermometer: ON"; // Update label to show it's ON
+            thermometerSwitch.closest('.thermometer-switch').style.backgroundColor = "#00ff00"; // Green background for ON state
+        } else {
+            console.log("Thermometer OFF");
+            thermometerLabel.textContent = "Thermometer: OFF"; // Update label to show it's OFF
+            thermometerSwitch.closest('.thermometer-switch').style.backgroundColor = "#ff0000"; // Red background for OFF state
+        }
+    });
+
+    function updateDateTime() {
+        const now = new Date();
+
+        // Format date as "October 1, 2001"
+        const options = { year: 'numeric', month: 'long', day: 'numeric' };
+        const formattedDate = now.toLocaleDateString('en-US', options);
+
+        // Format time as "4:55 PM"
+        const formattedTime = now.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', hour12: true });
+
+        // Combine date and time
+        const dateTime = `${formattedDate}  |  ${formattedTime}`;
+
+        // Set the text of the datetime element
+        const dateTimeElement = document.getElementById('date-time');
+        if (dateTimeElement) {
+            dateTimeElement.textContent = dateTime; // Update datetime
+        }
     }
-});
 
-fanSwitch.addEventListener("change", (e) => {
-    const fanLabel = fanSwitch.closest('.fan-switch').querySelector('.label'); // Find label in fan-switch container
-    if (e.target.checked) {
-        console.log("Smart Fan ON");
-        fanLabel.textContent = "Fan: ON"; // Update label to show it's ON
-        fanSwitch.closest('.fan-switch').style.backgroundColor = "#00ff00"; // Green background for ON state
-    } else {
-        console.log("Smart Fan OFF");
-        fanLabel.textContent = "Fan: OFF"; // Update label to show it's OFF
-        fanSwitch.closest('.fan-switch').style.backgroundColor = "#ff0000"; // Red background for OFF state
-    }
-});
-
-speakerSwitch.addEventListener("change", (e) => {
-    const speakerLabel = speakerSwitch.closest('.speaker-switch').querySelector('.label'); // Find label in speaker-switch container
-    if (e.target.checked) {
-        console.log("Smart Speaker ON");
-        speakerLabel.textContent = "Speaker: ON"; // Update label to show it's ON
-        speakerSwitch.closest('.speaker-switch').style.backgroundColor = "#00ff00"; // Green background for ON state
-    } else {
-        console.log("Smart Speaker OFF");
-        speakerLabel.textContent = "Speaker: OFF"; // Update label to show it's OFF
-        speakerSwitch.closest('.speaker-switch').style.backgroundColor = "#ff0000"; // Red background for OFF state
-    }
-});
-
-thermometerSwitch.addEventListener("change", (e) => {
-    const thermometerLabel = thermometerSwitch.closest('.thermometer-switch').querySelector('.label'); // Find label in thermometer-switch container
-    if (e.target.checked) {
-        console.log("Thermometer ON");
-        thermometerLabel.textContent = "Thermometer: ON"; // Update label to show it's ON
-        thermometerSwitch.closest('.thermometer-switch').style.backgroundColor = "#00ff00"; // Green background for ON state
-    } else {
-        console.log("Thermometer OFF");
-        thermometerLabel.textContent = "Thermometer: OFF"; // Update label to show it's OFF
-        thermometerSwitch.closest('.thermometer-switch').style.backgroundColor = "#ff0000"; // Red background for OFF state
-    }
-});
-
-function updateDateTime() {
-    const now = new Date();
-
-    // Format date as "October 1, 2001"
-    const options = { year: 'numeric', month: 'long', day: 'numeric' };
-    const formattedDate = now.toLocaleDateString('en-US', options);
-
-    // Format time as "4:55 PM"
-    const formattedTime = now.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', hour12: true });
-
-    // Combine date and time
-    const dateTime = `${formattedDate}  |  ${formattedTime}`;
-
-    // Set the text of the datetime element
-    const dateTimeElement = document.getElementById('date-time');
-    if (dateTimeElement) {
-        dateTimeElement.textContent = dateTime; // Update datetime
-    }
-}
-
-// Ensure the page is fully loaded before starting the time update
-document.addEventListener("DOMContentLoaded", function() {
+    // Ensure the page is fully loaded before starting the time update
     updateDateTime(); // Initialize date and time immediately on page load
     setInterval(updateDateTime, 1000); // Update every second
 });
@@ -318,12 +322,3 @@ document.addEventListener("DOMContentLoaded", function() {
     // Open the modal to test
     showModal(); // Open the modal immediately to test
 });
-
-
-
-
-
-  
-
-
-
