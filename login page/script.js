@@ -107,6 +107,8 @@ googleSignInIcon.addEventListener('click', async (event) => {
         if (userDoc.exists()) {
             alert("You are already registered. Redirecting to home...");
             window.location.href = "../landing page/home.html";
+             
+            
         } else {
             await setDoc(doc(db, "users", user.uid), {
                 email: user.email,
@@ -163,6 +165,7 @@ signUpForm.addEventListener('submit', async (event) => {
         // Log in the user automatically after sign-up
         await signInWithEmailAndPassword(auth, email, password);
         window.location.href = "../landing page/home.html"; // Redirect after sign-in
+        window.location.reload(); // Reload the page to reset the state
     } catch (error) {
         handleError(error, "Sign-up");
     } finally {
