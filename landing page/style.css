@@ -1,27 +1,32 @@
+/* Import Google Fonts - Roboto for main typography */
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
 
-*{
+/* Reset default styles */
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
-html, body{
+
+/* Base layout for html and body */
+html, body {
+    display: grid;
     overflow: hidden;
-    height: 100vh;
+    height: 100vh; /* Full viewport height */
 }
 
-.carousel{
+/* Main carousel container */
+.carousel {
     height: 100vh;
-    background: #E5DCD7;
+    background: #E5DCD7; /* Light beige background */
 }
 
-/* info for items */
-
-.item .info-box{
+/* Information box styling */
+.item .info-box {
     position: absolute;
     left: 10%;
     top: 50%;
-    transform: translateY(-50%);
+    transform: translateY(-50%); /* Center vertically */
     width: 670px;
     height: 550px;
     display: flex;
@@ -29,50 +34,58 @@ html, body{
     z-index: 1;
     overflow: hidden;
 }
-.info-box .info-slider{
+
+/* Info slider animation container */
+.info-box .info-slider {
     height: inherit;
-    transition: .5s ease;
+    transition: .5s ease; /* Smooth transition for sliding */
 }
 
-.info-slider .info-item{
+/* Individual info item styling */
+.info-slider .info-item {
     height: inherit;
     display: flex;
     flex-direction: column;
     justify-content: center;
     color: black;
-    transform: translateY(calc(var(--i) * 100%));
+    transform: translateY(calc(var(--i) * 100%)); /* Slide animation */
 }
 
-.info-item h2{
+/* Main heading style */
+.info-item h2 {
     font-family: 'Roboto', sans-serif;
     font-weight: bold;
     font-size: 100px;
     line-height: 1;
 }
 
-.info-item p{
+/* Paragraph text style */
+.info-item p {
     font-family: 'Roboto', sans-serif;
     font-weight: normal;
     font-size: 30px;
     margin: 15px 0 20px;
 }
 
+/* Cloud decorations container */
 .clouds {
     position: absolute;
     left: 0;
-    top: 0; /* Add this if needed */
+    top: 0;
     width: 100%;
-    height: 100%; /* Ensure this is set */
-    overflow: visible; /* Ensure it allows overflow */
+    height: 100%;
+    overflow: visible;
 }
+
+/* Individual cloud positioning and styling */
 .clouds .cloud1 {
     position: absolute;
     left: 75%;
     top: 70%;
     width: 300px;
     height: auto;
-    rotate: -10deg;  
-    z-index: 10; 
+    rotate: -10deg;
+    z-index: 10;
 }
 
 .clouds .cloud2 {
@@ -81,55 +94,64 @@ html, body{
     top: 20%;
     width: 300px;
     height: auto;
-    rotate: -10deg; 
+    rotate: -10deg;
     z-index: 10;
 }
 
 .clouds .cloud3 {
     position: absolute;
     left: 80%;
-    top: 1%; 
+    top: 1%;
     width: 300px;
     height: auto;
     z-index: 10;
-    rotate: 10deg; 
+    rotate: 10deg;
 }
 
-.item .img-box{
+/* Image box container */
+.item .img-box {
     position: absolute;
-    left: 63%;
+    left: 75%;
     top: 50%;
-    transform: translateY(-50%);
-    width: 500px;
-    height: 700px;
+    transform: translate(-50%, -50%);
+    width: 80vw;
+    height: auto;
+    max-width: 500px;
+    max-height: 700px;
     display: flex;
     align-items: center;
     overflow: hidden;
 }
 
-.img-box .img-slider{
-    width: inherit;
-    height: inherit;
+/* Image slider container */
+.img-box .img-slider {
+    width: 100%;
+    height: 100%;
     transition: .5s ease;
 }
 
-.img-slider .img-item{
-    width: inherit;
-    height: inherit;
+/* Individual image item */
+.img-slider .img-item {
+    width: 100%;
+    height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
     transform: translateX(calc(var(--i) * 100%));
 }
 
-.img-item img{
+/* Image styling */
+.img-item img {
     pointer-events: none;
-    filter: drop-shadow(0 0 10 rgba(0, 0, 0, .2));
+    filter: drop-shadow(0 0 10px rgba(0, 0, 0, .2));
     transform: scale(0);
     transition: .5s ease;
+    width: 100%;
+    object-fit: cover;
 }
 
-.item.active .img-item img{
+/* Active image state */
+.item.active .img-item img {
     transform: scale(1);
 }
 
@@ -148,11 +170,13 @@ html, body{
         -8px -8px 15px rgba(255, 255, 255, 0.9); /* Highlight for depth */
 }
 
+/* Menu list styling */
 .menu ul {
     padding: 0;
     margin: 0;
 }
 
+/* Menu item styling */
 .menu li {
     list-style: none;
     width: 70px;
@@ -160,22 +184,23 @@ html, body{
     display: inline-block;
     border-radius: 15px;
     text-align: center;
-    transition: background-color 1s;  /* jero// Smooth transition for background color */
+    transition: background-color 1s;  /* Smooth transition for background color */
 }
 
-/* Adjust the icon size here */
+/* Menu icon styling */
 .menu li i {
     font-size: 30px; /* Set your desired icon size */
     display: block; /* Ensure the icon behaves as a block element */
     margin: 20px; /* Center the icon within the list item */
 }
 
+/* Active menu item styling */
 .menu li:nth-child(3) {
     background-color: #6CAFA3; /* Dark background for the selected button */
     color: #000000;
 }
 
-/* Optional: Add a hover effect */
+/* Optional: Hover effect on menu items */
 .menu li:hover {
     box-shadow: 
         2px 2px 8px rgba(0, 0, 0, 0.2), /* Subtle shadow on hover */
@@ -205,6 +230,7 @@ html, body{
     opacity: 1;
 }
 
+/* Color variations for circle background */
 .item:nth-child(1) .circle-bg {
     background: #6CAFA3;
 }
@@ -545,6 +571,67 @@ html, body{
     transform: translateX(20px); /* Move the circle to the right */
 }
 
+@media (max-width: 767px) {
+    .dashboard-content {
+        padding: 15px;
+        margin: 10px;
+    }
+
+    .dashboard-box {
+        width: calc(100% - 20px);
+        margin: 10px;
+        padding: 15px;
+    }
+
+    .dashboard-header {
+        font-size: 20px;
+        margin-bottom: 15px;
+    }
+
+    .dashboard-grid {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+
+    .dashboard-item {
+        padding: 12px;
+    }
+}
+
+@media (max-width: 480px) {
+    .dashboard-content {
+        padding: 10px;
+        margin: 5px;
+    }
+
+    .dashboard-box {
+        width: calc(100% - 10px);
+        margin: 5px;
+        padding: 10px;
+    }
+
+    .dashboard-header {
+        font-size: 18px;
+        margin-bottom: 10px;
+    }
+
+    .dashboard-grid {
+        gap: 10px;
+    }
+
+    .dashboard-item {
+        padding: 10px;
+    }
+
+    .dashboard-item h3 {
+        font-size: 16px;
+    }
+
+    .dashboard-item p {
+        font-size: 14px;
+    }
+}
+
 @media (max-width: 768px) {
     .item .info-box {
         width: 80%;
@@ -588,4 +675,455 @@ html, body{
 
 #modal {
     display: none;
+}
+
+/* Tablet Responsive Adjustments */
+@media (max-width: 1024px) and (min-width: 768px) {
+    .item .info-box {
+        left: 4%;
+        height: auto;
+        width: auto;
+        margin-top: 20%;
+    }
+
+    .info-item h2 {
+        font-size: 5rem; /* Slightly smaller heading for tablets */
+    }
+
+    .info-item p {
+        font-size: 2rem; /* Smaller font for better readability */
+    }
+
+    .item .img-box {
+        left: 50%; /* Centering adjustments */
+        width: 50%; /* Narrower image box for tablets */
+        top: 28%;
+    }
+
+    .menu li {
+        width: 70px; /* Slightly larger for easier touch */
+        height: 70px;
+    }
+
+    .circle-bg {
+        left: 50%;
+        width: 800px; /* Reduced size for smaller screen */
+        height: 800px;
+        top: 10%; /* Adjusted position for better fit */
+    }
+
+    .clouds .cloud1 {
+        left: 60%; /* Adjusted position for tablets */
+        top: 20%;
+        width: 350px; /* Scaled down for smaller screens */
+        rotate: -5deg; /* Subtle adjustment */
+    }
+
+    .clouds .cloud2 {
+        left: 4%; /* Re-centered */
+        top: 25%; /* Adjusted height */
+        width: 250px;
+        rotate: -8deg;
+    }
+
+    .clouds .cloud3 {
+        left: 15%; /* Slight adjustment to position */
+        width: 200px;
+        rotate: 8deg;
+    }
+    
+    .modal {
+        width: 95%;
+        height: 80%;
+        padding: 15px;
+    }
+
+    .modal-content h2 {
+        font-size: 30px;
+        margin-bottom: 15px;
+    }
+
+    .close {
+        font-size: 30px;
+    }
+
+    .box {
+        padding: 10px;
+    }
+
+    .box h3 {
+        font-size: 20px;
+    }
+
+    .large-box-1, .large-box-2 {
+        width: 70%; /* Wider boxes for tablets */
+        height: 330px; /* Reduced height */
+    }
+
+    .small-box {
+        width: 200px; /* Adjust width for tablets */
+        height: 250px; /* Adjust height for tablets */
+    }
+
+    /* Adjust font size for the box heading */
+    .box h3 {
+        font-size: 15px; /* Smaller font size for tablets */
+    }
+
+    /* Adjust the size of the image for tablets */
+    .box-image {
+        height: auto;
+        width: 150px; /* Smaller image for tablets */
+    }
+
+    /* Adjust the label and button size */
+    label {
+        width: 60px; /* Smaller toggle for tablets */
+        height: 35px; /* Adjusted height */
+    }
+
+    .moving_circle {
+        width: 30px; /* Smaller circle for the toggle */
+        height: 30px;
+    }
+
+    input[type="checkbox"]:checked + .moving_circle {
+        left: 22px; /* Adjusted position of the moving circle */
+    }
+
+    .box-content {
+        gap: 10px; /* Reduce space between toggle and button on tablets */
+    }
+}
+
+/* Mobile Responsive Adjustments */
+@media (max-width: 767px) and (min-width: 458px) {
+    .item .info-box {
+        left: 2%;
+        height: auto;
+        width: auto;
+        margin-top: 50%;
+    }
+
+    .info-item h2 {
+        font-size: 4rem; /* Smaller heading for small mobile */
+    }
+
+    .info-item p {
+        font-size: 1.5rem; /* Reduced font size for better readability */
+    }
+
+    .item .img-box {
+        left: 50%; /* Centering adjustments */
+        height: 70%;
+        width: 70%; /* Narrower image box for small mobile */
+        top: 35%;
+    }
+
+    .menu li {
+        width: 50px; /* Smaller size for touch interaction */
+        height: 50px;
+    }
+
+    .circle-bg {
+        left: 20%;
+        width: 600px; /* Smaller circle */
+        height: 600px;
+        top: 33%; /* Adjusted position for better fit */
+    }
+
+    .clouds .cloud1 {
+        left: 60%; /* Adjusted for small mobile */
+        top: 35%;
+        width: 150px; /* Scaled down */
+        rotate: -3deg;
+    }
+
+    .clouds .cloud2 {
+        left: 5%; /* Re-centered */
+        top: 50%; /* Adjusted height */
+        width: 150px;
+        rotate: -6deg;
+    }
+
+    .clouds .cloud3 {
+        left: 5%; /* Slight adjustment to position */
+        width: 150px;
+        rotate: 5deg;
+    }
+    
+    .modal {
+        width: 90%;
+        height: 90%;
+        padding: 10px;
+    }
+
+    .modal-content h2 {
+        font-size: 16px;
+        margin-bottom: 10px;
+    }
+
+    .close {
+        font-size: 20px;
+    }
+
+    .box {
+        padding: 5px;
+    }
+
+    .box h3 {
+        font-size: 10px;
+    }
+
+    .large-box-1 {
+        width: 90%;
+        height: 200px;
+        margin: 10px 0;
+    }
+
+    .large-box-2 {
+        width: 90%;
+        height: 150px;  /* Reduced height for large box 2 */
+        margin: 10px 0;
+    }
+
+    .small-box {
+        width: 100px; /* Smaller boxes for mobile */
+        height: 150px;
+    }
+
+    /* Adjust font size for the box heading */
+    .box h3 {
+        font-size: 10px; /* Smaller font size for small mobile */
+    }
+
+    /* Adjust the size of the image for small mobile */
+    .box-image {
+        height: auto;
+        width: 80px;  /* Smaller image */
+    }
+
+    /* Adjust the label and button size */
+    label {
+        width: 40px;  /* Smaller toggle switch */
+        height: 20px;
+    }
+
+    .moving_circle {
+        width: 15px; /* Smaller circle for the toggle */
+        height: 15px;
+    }
+
+    input[type="checkbox"]:checked + .moving_circle {
+        left: 13px; /* Adjusted position of the moving circle */
+    }
+
+    .box-content {
+        gap: 5px;  /* Reduce space between toggle and button on small mobile */
+    }
+}
+
+@media (max-width: 767px) {
+    .small-box {
+        width: 120px;
+        height: 120px;
+        margin: 10px;
+    }
+
+    .large-box {
+        width: 250px;
+        height: 250px;
+        margin: 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    .small-box {
+        width: 100px;
+        height: 100px;
+        margin: 8px;
+    }
+
+    .large-box {
+        width: 200px;
+        height: 200px;
+        margin: 8px;
+    }
+}
+
+@media (max-width: 767px) {
+    .grid-container {
+        padding: 10px;
+    }
+
+    .large-box-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .large-box-1 {
+        width: 90%;
+        height: 200px;
+        margin: 10px 0;
+    }
+
+    .large-box-2 {
+        width: 90%;
+        height: 150px;  /* Reduced height for large box 2 */
+        margin: 10px 0;
+    }
+
+    .small-box-container {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 15px;
+        width: 90%;
+        margin: 0 auto;
+    }
+
+    .small-box {
+        width: 100%;
+        height: 180px;  /* Reduced height for small boxes */
+        margin: 0;
+    }
+
+    .box-content {
+        gap: 15px;  /* Reduced gap */
+    }
+
+    .box-image {
+        width: 100px;  /* Smaller images */
+        margin-top: 10px;
+    }
+
+    .box h3 {
+        font-size: 15px;
+        padding: 6px 0;
+    }
+}
+
+@media (max-width: 480px) {
+    .grid-container {
+        padding: 5px;
+    }
+
+    .large-box-1 {
+        width: 95%;
+        height: 180px;
+        margin: 8px 0;
+    }
+
+    .large-box-2 {
+        width: 95%;
+        height: 120px;  /* Even smaller height for large box 2 on smaller screens */
+        margin: 8px 0;
+    }
+
+    .small-box {
+        width: 100%;
+        height: 150px;  /* Even smaller height for small boxes on mobile */
+    }
+
+    /* Adjust font size for the box heading */
+    .box h3 {
+        font-size: 13px;
+        padding: 4px 0;
+    }
+
+    /* Adjust the size of the image for small mobile */
+    .box-image {
+        height: auto;
+        width: 80px;  /* Even smaller images */
+        margin-top: 8px;
+    }
+
+    /* Adjust the label and button size */
+    label {
+        width: 35px;  /* Smaller toggle switch */
+        height: 20px;
+    }
+
+    .moving_circle {
+        width: 15px; /* Smaller circle for the toggle */
+        height: 15px;
+    }
+
+    input[type="checkbox"]:checked + .moving_circle {
+        left: 13px; /* Adjusted position of the moving circle */
+    }
+
+    .box-content {
+        gap: 10px;  /* Smaller gap */
+    }
+}
+
+@media (max-width: 767px) {
+    /* Smaller switches for tablets */
+    .container {
+        width: 40px;
+        height: 24px;
+    }
+
+    .container .moving_circle {
+        width: 40px;
+        height: 24px;
+    }
+
+    .container .moving_circle::after {
+        width: 18px;
+        height: 18px;
+        top: 3px;
+        left: 3px;
+    }
+
+    .container input:checked + .moving_circle::after {
+        transform: translateX(16px);
+    }
+}
+
+@media (max-width: 480px) {
+    /* Even smaller switches for mobile */
+    .container {
+        width: 32px;
+        height: 20px;
+    }
+
+    .container .moving_circle {
+        width: 32px;
+        height: 20px;
+    }
+
+    .container .moving_circle::after {
+        width: 14px;
+        height: 14px;
+        top: 3px;
+        left: 3px;
+    }
+
+    .container input:checked + .moving_circle::after {
+        transform: translateX(12px);
+    }
+}
+
+@media (max-width: 480px) {
+    /* Even smaller boxes for mobile */
+    .small-box {
+        height: 130px;  /* Reduced height for small boxes on mobile */
+    }
+
+    /* Adjust content for smaller box */
+    .box-content {
+        gap: 8px;  /* Tighter spacing */
+    }
+
+    .box-image {
+        height: auto;
+        width: 70px;  /* Smaller images */
+        margin-top: 6px;
+    }
+
+    .box h3 {
+        font-size: 12px;
+        padding: 3px 0;
+    }
 }
