@@ -23,11 +23,11 @@
 ## Key Features
 
 ## Usage
--Open the dashboard by clicking the menu icon in the bottom navigation bar.
--Sign up for an account or log in to personalize your experience.
--Use the main navigation menu to explore sections like Smart Lamp, Smart Fan, Speaker, and Thermometer.
--Control devices by toggling their switches or selecting specific options from their dedicated sections.
--View analytics such as Monthly Electric Consumption to track usage patterns.
+- Open the dashboard by clicking the menu icon in the bottom navigation bar.
+- Sign up for an account or log in to personalize your experience.
+- Use the main navigation menu to explore sections like Smart Lamp, Smart Fan, Speaker, and Thermometer.
+- Control devices by toggling their switches or selecting specific options from their dedicated sections.
+- View analytics such as Monthly Electric Consumption to track usage patterns.
 
 ## Technologies Used
 
