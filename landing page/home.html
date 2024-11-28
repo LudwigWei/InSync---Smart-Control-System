@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>InSync Smart Control System</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+
+    <script src="https://www.gstatic.com/firebasejs/9.21.0/firebase-app.js" type="module"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.21.0/firebase-database.js" type="module"></script>
+    
+    <!-- Include Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+
+    <div class="carousel">
+        <!--lamp-->
+        <div class="item active">
+            <!-- Circle Background -->
+            <div class="circle-bg"></div>
+            <!--clouds-->
+            <div class="clouds">
+                <img src="assets/cloud.png" class="cloud1">
+                <img src="assets/cloud.png" class="cloud2">
+                <img src="assets/cloud.png" class="cloud3">
+            </div>
+            <div class="info-box">
+                <div class="info-slider">
+                    <div class="info-item" style="--i:0;">
+                        <h2>Smart Lamp</h2>
+                        <p>Turn your lamp on and off from anywhere, whether on your phone or desktop. Enjoy seamless, remote control across devices for quick and convenient lighting adjustments!</p>
+
+                    </div>
+                </div>
+            </div>
+            <div class="img-box">
+                <div class="img-slider">
+                    <div class="img-item" style="--i:0;">
+                        <img src="assets/lamp.png">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--fan-->
+        <div class="item">
+            <!-- Circle Background -->
+            <div class="circle-bg"></div>
+            <div class="info-box">
+                <div class="info-slider">
+                    <div class="info-item" style="--i:1;">
+                        <h2>Smart Fan</h2>
+                        <p>Control your fan with ease—simply turn it on or off remotely from your phone or desktop for convenient, instant cooling whenever you need it!</p>
+
+                    </div>
+                </div>
+            </div>
+            <div class="img-box">
+                <div class="img-slider">
+                    <div class="img-item" style="--i:1;">
+                        <img src="assets/fan.png">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--speaker-->
+        <div class="item">
+            <!-- Circle Background -->
+            <div class="circle-bg"></div>
+            <div class="info-box">
+                <div class="info-slider">
+                    <div class="info-item" style="--i:2;">
+                        <h2>Smart Speaker</h2>
+                        <p>Effortlessly turn your speaker on or off from your phone or desktop. Enjoy easy control to play music, access voice assistants, and manage audio settings remotely!</p>
+
+                    </div>
+                </div>
+            </div>
+            <div class="img-box">
+                <div class="img-slider">
+                    <div class="img-item" style="--i:2;">
+                        <img src="assets/speaker.png">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--thermometer-->
+        <div class="item">
+            <!-- Circle Background -->
+            <div class="circle-bg"></div>
+            <div class="info-box">
+                <div class="info-slider">
+                    <div class="info-item" style="--i:3;">
+                        <h2>Thermometer</h2>
+                        <p>Monitor temperature effortlessly from your phone or desktop. Check real-time readings for convenient temperature tracking anytime, anywhere!</p>
+
+                    </div>
+                </div>
+            </div>
+            <div class="img-box">
+                <div class="img-slider">
+                    <div class="img-item" style="--i:3;">
+                        <img src="assets/thermometer.png">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal for dashboard -->
+        <div id="modal" class="modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <h2>
+                    Dashboard
+                </h2>
+
+                <!-- Grid container for the boxes -->
+                <div class="grid-container">
+                    <!-- Large Box Container for horizontal alignment -->
+                    <div class="large-box-container">
+                        <div class="box large-box large-box-1">
+                            <!-- Canvas for the chart -->
+                            <canvas id="chartCanvas" width="400" height="400"></canvas>
+                        </div>
+                        <div class="box large-box large-box-2">
+                            <div id="dateTime" class="date-time-display"></div>
+                        </div>
+                    </div>
+
+                    <!-- Small Box Container for horizontal alignment -->
+                    <div class="small-box-container">
+                        <div class="box small-box">
+                            <div class="box-content">
+                                <h3>Smart Lamp</h3>
+                                <!-- on & off button -->
+                                <div class="container">
+                                    <label>
+                                        <div class="lamp-switch">
+                                            <input type="checkbox">
+                                            <div class="moving_circle"></div>
+                                        </div>
+                                    </label>
+                                </div>
+                            </div>
+                            <!-- Image placed outside of .box-content to appear below -->
+                            <img src="assets/lamp.png" alt="Smart Lamp" class="box-image">
+                        </div>
+                        <div class="box small-box">
+                            <div class="box-content">
+                                <h3>Smart Fan</h3>
+                                <!-- on & off button -->
+                                <div class="container">
+                                    <label>
+                                        <div class="fan-switch">
+                                            <input type="checkbox">
+                                            <div class="moving_circle"></div>
+                                        </div>
+                                    </label>
+                                </div>
+                            </div>
+                            <!-- Image placed outside of .box-content to appear below -->
+                            <img src="assets/fan.png" alt="Smart Fan" class="box-image">
+                        </div>
+                        <div class="box small-box">
+                            <div class="box-content">
+                                <h3>Speaker</h3>
+                                <!-- on & off button -->
+                                <div class="container">
+                                    <label>
+                                        <div class="speaker-switch">
+                                            <input type="checkbox">
+                                            <div class="moving_circle"></div>
+                                        </div>
+                                    </label>
+                                </div>
+                            </div>
+                            <!-- Image placed outside of .box-content to appear below -->
+                            <img src="assets/speaker.png" alt="Smart Speaker" class="box-image">
+                        </div>
+                        <div class="box small-box">
+                            <div class="box-content">
+                                <h3>Thermometer</h3>
+                                <!-- on & off button -->
+                                <div class="container">
+                                    <label>
+                                        <div class="thermometer-switch">
+                                            <input type="checkbox">
+                                            <div class="moving_circle"></div>
+                                        </div>
+                                    </label>
+                                </div>
+                            </div>
+                            <!-- Image placed outside of .box-content to appear below -->
+                            <img src="assets/thermometer.png" alt="Smart Thermometer" class="box-image">
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal for user information -->
+        <div id="modal1" class="modal1">
+            <div class="modal-content1">
+                <span class="close1">&times;</span>
+                <h2>How IoT Works</h2>
+                <p>The Internet of Things (IoT) refers to the network of physical objects—devices, vehicles, appliances, etc.—that are embedded with sensors, software, and other technologies to connect and exchange data with other devices and systems over the internet. IoT works through the following key components:</p>
+                <ul>
+                    <li><strong>Devices/Sensors:</strong> These collect data from the physical world (e.g., temperature, motion, light). Sensors are often embedded in objects like home appliances, smartwatches, or vehicles.</li>
+                    <li><strong>Connectivity:</strong> Devices connect to the internet or a local network using various protocols like Wi-Fi, Bluetooth, Zigbee, or cellular networks, allowing them to communicate with other devices or cloud services.</li>
+                    <li><strong>Data Processing:</strong> The collected data is sent to the cloud or local servers, where it is processed and analyzed. This could involve detecting patterns, anomalies, or making predictions based on the data.</li>
+                    <li><strong>Action:</strong> Based on the processed data, actions are triggered automatically or notified to users. For example, a smart thermostat might adjust room temperature based on your preferences or a smart security system might alert you about unusual activity.</li>
+                </ul>
+                <p>In essence, IoT connects the physical and digital worlds to create smarter, more efficient systems.</p>
+            </div>
+        </div>
+
+        <!-- List menu -->
+        <div class="menu">
+            <ul>
+                <li id="dashboard"><i class="fa-solid fa-bars"></i></li>
+                <li id="user information"><i class="fa-regular fa-user"></i></li>
+                <li id="next"><i class="fa-solid fa-arrow-right"></i></li>
+            </ul>
+        </div>
+    </div>
+
+    <script src="script.js" type="module"></script>
+    <script src="chart.js" type="module"></script>
+
+</body>
+</html>

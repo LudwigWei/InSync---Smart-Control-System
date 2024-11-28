@@ -1,0 +1,906 @@
+/* Import Google Fonts - Roboto for main typography */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+/* Reset default styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Base layout for html and body */
+html, body {
+    display: grid;
+    overflow: hidden;
+    height: 100vh; /* Full viewport height */
+}
+
+/* Main carousel container */
+.carousel {
+    height: 100vh;
+    background: #E5DCD7; /* Light beige background */
+}
+
+/* Information box styling */
+.item .info-box {
+    position: absolute;
+    left: 10%;
+    top: 50%;
+    transform: translateY(-50%); /* Center vertically */
+    width: 670px;
+    height: 550px;
+    display: flex;
+    align-items: center;
+    z-index: 1;
+    overflow: hidden;
+}
+
+/* Info slider animation container */
+.info-box .info-slider {
+    height: inherit;
+    transition: .5s ease; /* Smooth transition for sliding */
+}
+
+/* Individual info item styling */
+.info-slider .info-item {
+    height: inherit;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    color: black;
+    transform: translateY(calc(var(--i) * 100%)); /* Slide animation */
+}
+
+/* Main heading style */
+.info-item h2 {
+    font-family: 'Roboto', sans-serif;
+    font-weight: bold;
+    font-size: 100px;
+    line-height: 1;
+}
+
+/* Paragraph text style */
+.info-item p {
+    font-family: 'Roboto', sans-serif;
+    font-weight: normal;
+    font-size: 30px;
+    margin: 15px 0 20px;
+}
+
+/* Cloud decorations container */
+.clouds {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: visible;
+}
+
+/* Individual cloud positioning and styling */
+.clouds .cloud1 {
+    position: absolute;
+    left: 75%;
+    top: 70%;
+    width: 300px;
+    height: auto;
+    rotate: -10deg;
+    z-index: 10;
+}
+
+.clouds .cloud2 {
+    position: absolute;
+    left: 50%;
+    top: 20%;
+    width: 300px;
+    height: auto;
+    rotate: -10deg;
+    z-index: 10;
+}
+
+.clouds .cloud3 {
+    position: absolute;
+    left: 80%;
+    top: 1%;
+    width: 300px;
+    height: auto;
+    z-index: 10;
+    rotate: 10deg;
+}
+
+/* Image box container */
+.item .img-box {
+    position: absolute;
+    left: 75%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 80vw;
+    height: auto;
+    max-width: 500px;
+    max-height: 700px;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+}
+
+/* Image slider container */
+.img-box .img-slider {
+    width: 100%;
+    height: 100%;
+    transition: .5s ease;
+}
+
+/* Individual image item */
+.img-slider .img-item {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform: translateX(calc(var(--i) * 100%));
+}
+
+/* Image styling */
+.img-item img {
+    pointer-events: none;
+    filter: drop-shadow(0 0 10px rgba(0, 0, 0, .2));
+    transform: scale(0);
+    transition: .5s ease;
+    width: 100%;
+    object-fit: cover;
+}
+
+/* Active image state */
+.item.active .img-item img {
+    transform: scale(1);
+}
+
+/* Menu Button */
+.menu {
+    position: fixed;
+    background-color: #E5DCD7; /* Light background for neomorphic effect */
+    border-radius: 15px;
+    left: 50%;
+    bottom: 20px;
+    transform: translate(-50%);
+    z-index: 200;
+    padding: 10px; /* Add padding for spacing */
+    box-shadow: 
+        8px 8px 15px rgba(0, 0, 0, 0.2), /* Shadow for depth */
+        -8px -8px 15px rgba(255, 255, 255, 0.9); /* Highlight for depth */
+    cursor: pointer;
+}
+
+/* Menu list styling */
+.menu ul {
+    padding: 0;
+    margin: 0;
+}
+
+/* Menu item styling */
+.menu li {
+    list-style: none;
+    width: 70px;
+    height: 70px;
+    display: inline-block;
+    border-radius: 15px;
+    text-align: center;
+    transition: background-color 1s;  /* Smooth transition for background color */
+}
+
+/* Menu icon styling */
+.menu li i {
+    font-size: 30px; /* Set your desired icon size */
+    display: block; /* Ensure the icon behaves as a block element */
+    margin: 20px; /* Center the icon within the list item */
+}
+
+/* Active menu item styling */
+.menu li:nth-child(3) {
+    background-color: #6CAFA3; /* Dark background for the selected button */
+    color: #000000;
+}
+
+/* Optional: Hover effect on menu items */
+.menu li:hover {
+    box-shadow: 
+        2px 2px 8px rgba(0, 0, 0, 0.2), /* Subtle shadow on hover */
+        -2px -2px 8px rgba(255, 255, 255, 0.9); /* Highlight on hover */
+    transform: translateY(-5px); /* Lift effect on hover */
+}
+
+/* Circle Background */
+.circle-bg {
+    position: absolute;
+    width: 850px;
+    height: 850px;
+    background: #eee;
+    border-radius: 50%;
+    top: 50%; 
+    right: -27%; 
+    transform: translate(-50%, -50%); 
+    z-index: 0;
+    opacity: 0;
+    transition: .2s;
+    clip-path: circle(50% at 50% 50%);
+    overflow: hidden; 
+}
+
+/* Circle Background kapag nagiiba ng item */
+.item.active .circle-bg{
+    opacity: 1;
+}
+
+/* Color variations for circle background */
+.item:nth-child(1) .circle-bg {
+    background: #6CAFA3;
+}
+
+.item:nth-child(2) .circle-bg {
+    background: #B093F2;
+}
+
+.item:nth-child(3) .circle-bg {
+    background: #5993D4;
+}
+
+.item:nth-child(4) .circle-bg {
+    background: #F55853;
+}
+
+/* Modal for dashboard */
+.modal {
+    display: none; 
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 100;
+    width: 85%;
+    height: 85%;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.2); 
+    border-radius: 15px;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1); 
+    border: 1px solid rgba(255, 255, 255, 0.3); 
+}
+
+/* Modal content styling */
+.modal-content {
+    padding: 20px;
+    color: white; /* Ensure text is visible */
+}
+
+/* Change font, size, and add outline to the "Dashboard" heading */
+.modal-content h2 {
+    font-family: 'Roboto', sans-serif; /* Replace with your desired font */
+    font-size: 50px; /* Adjust font size */
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+/* Close button */
+.close {
+    position: absolute;
+    top: 10px;
+    right: 35px;
+    font-size: 80px;
+    color: black;
+    cursor: pointer;
+}
+
+/* Box styling */
+.box {
+    background-color: rgba(255, 255, 255, 0.1); /* Light box background */
+    padding: 20px;
+    margin: 15px 0;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+}
+
+.box h3 {
+    margin-top: 0;
+    font-size: 20px;
+}
+
+/* Optional: Hover effect on the box */
+.box:hover {
+    
+    transform: scale(1.02); /* Slight scaling effect */
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+/* Modal for information */
+.modal1 {
+    display: none; /* Initially hidden */
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 100;
+    width: 85%;
+    height: 85%;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 15px;
+    backdrop-filter: blur(20px);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    overflow-y: auto; /* Add scroll for overflow content */
+}
+
+/* Modal content (text, images, etc.) */
+.modal-content1 {
+    padding: 20px; /* Adjusted padding for better spacing */
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* Align items to start for spreading content */
+    justify-content: space-between; /* Spread content evenly within the modal */
+    color: #272626; /* White text for contrast */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Modern font */
+    text-align: justify; /* Justify text for even distribution */
+    line-height: 1.8; /* Increased line spacing for better readability */
+    max-width: 100%; /* Full width of the modal */
+    margin: 0; /* Remove extra centering margins */
+}
+
+/* Title styling */
+.modal-content1 h2 {
+    font-size: 4rem; /* Adjusted for better fit in the modal */
+    font-weight: 600; /* Bold title */
+    margin-bottom: 15px; /* Reduced space below the title */
+    color: #aa1b0e; /* Accent color for the title */
+    text-transform: uppercase; /* Uppercase for emphasis */
+    letter-spacing: 0.8px; /* Adjusted letter spacing */
+    text-align: center; /* Center-align title */
+    width: 100%; /* Ensure title spans the modal width */
+}
+
+/* Paragraph text styling */
+.modal-content1 p {
+    font-size: 1.5rem; /* Adjusted size for better fit */
+    font-weight: 400; /* Regular weight for body text */
+    color: #272626; /* Slightly off-white text color */
+    margin-bottom: 10px; /* Adjusted spacing between paragraphs */
+    width: 100%; /* Ensure text fits within modal */
+}
+
+/* List styling (for the points) */
+.modal-content1 ul {
+    list-style-type: none; /* Remove default list style */
+    padding-left: 0; /* Remove default padding */
+    margin-top: 10px; /* Adjusted margin at the top */
+    width: 100%; /* Ensure list fits within modal */
+}
+
+.modal-content1 ul li {
+    margin-top: 10px;
+    font-size: 1.2rem; /* Adjusted size for list items */
+    color: #272626; /* Consistent text color */
+    margin-bottom: 8px; /* Reduced space between list items */
+    display: flex;
+    align-items: flex-start; /* Align list items neatly */
+}
+
+/* Strong (bold) text inside list items */
+.modal-content1 ul li strong {
+    color: #0c0c0c; /* Accent color for emphasis */
+    font-weight: 600; /* Bold for stronger emphasis */
+    margin-right: 8px; /* Space between label and description */
+}
+
+/* Enhance the readability of the last sentence in the paragraph */
+.modal-content1 p:last-child {
+    margin-top: 30px;
+    font-size: 2rem; /* Adjusted size */
+    font-style: italic; /* Italics for subtle emphasis */
+    color: #252222; /* Accent color */
+}
+
+/* Close button */
+.close1 {
+    position: absolute;
+    top: -20px;
+    right: 50px;
+    font-size: 80px;
+    cursor: pointer;
+}
+
+/* Show modal when active */
+.modal1.active {
+    display: block;
+}
+
+/* Testing */
+.menu li.highlight {
+    background-color: #2c393b; /* Highlight color for the selected button */
+    color: #fff; /* Change text color if needed */
+}
+
+/* boxes in the modal for dashboard */
+
+/* Container styles */
+.grid-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.large-box {
+    background-color: #6CAFA3; 
+    margin: 10px;
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 8px 8px 15px rgba(0, 0, 0, 0.1), -8px -8px 15px rgba(255, 255, 255, 0.7); 
+    transition: none; 
+}
+
+.large-box:hover {
+    background-color: #6CAFA3; 
+    transform: none; 
+    box-shadow: 8px 8px 15px rgba(0, 0, 0, 0.1), -8px -8px 15px rgba(255, 255, 255, 0.7); /* Maintain original shadow */
+}
+
+/* Specific styling for each large box */
+.large-box-1 {
+    width: 55%;  /* Adjust width for the first large box */
+    height: 250px; /* Adjust height for the first large box */
+}
+
+#chartCanvas {
+    width: 100%;
+    height: 100%;
+}
+
+.large-box-2 {
+    width: 55%;  /* Adjust width for the second large box */
+    height: 250px; /* Adjust height for the second large box */
+}
+
+/* Flex layout to align large boxes horizontally */
+.grid-container > .large-box-container {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+}
+
+/* Specific styling for the h3 elements */
+.box h3 {
+    font-family: 'Roboto', sans-serif; /* Change this to your preferred font */
+    font-size: 20px; /* Adjust the font size as needed */
+    font-weight: 500px; /* Make the text bold */
+    color: white; /* Ensure the font color is white for visibility */
+    text-align: center; /* Center-align the text */
+    margin: 0; /* Remove default margin */
+    padding: 10px 0; /* Optional: Add some padding for spacing */
+}
+
+/* Flex layout for small boxes */
+.small-box-container {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    width: 100%;
+}
+
+/* General box styling */
+.box {
+    padding: 20px;
+    border-radius: 15px;
+    background-color: #6CAFA3;
+    color: white;
+    position: relative; /* To position elements within */
+    box-shadow: 8px 8px 15px rgba(0, 0, 0, 0.1), -8px -8px 15px rgba(255, 255, 255, 0.7); /* Neumorphism shadow */
+    transition: all 0.3s ease-in-out;
+}
+
+/* Specific styling for small boxes */
+.small-box {
+    width: 365px;
+    height: 300px;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 8px 8px 15px rgba(0, 0, 0, 0.1), -8px -8px 15px rgba(255, 255, 255, 0.7); /* Neumorphism shadow */
+    align-items: center; /* Center everything vertically */
+    
+    transition: all 0.3s ease-in-out;
+}
+
+/* Align items horizontally in the box */
+.box-content {
+    display: flex;
+    align-items: center; /* Vertically aligns label and button */
+    gap: 90px;
+    justify-content: center; /* Align items horizontally in the center */
+}
+
+/* Styling for the images below label and button */
+.box-image {
+    width: 200px; /* Adjust size as needed */
+    height: auto;
+    margin-top: 20px; /* Add some space above the image */
+}
+
+/* Control label position */
+.label {
+    position: relative;
+}
+
+/* Container for the toggle switch */
+.container {
+    position: relative;
+    width: 50px;
+    height: 30px;
+}
+
+/* Hide the checkbox */
+.container input {
+    opacity: 0; /* Hide the checkbox */
+    position: absolute;
+    width: 0;
+    height: 0;
+}
+
+/* Background of the toggle switch */
+.container .moving_circle {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 50px;
+    height: 30px;
+    background-color: #ccc; /* Default gray color */
+    border-radius: 15px;
+    transition: background-color 0.3s, transform 0.3s; /* Smooth transition */
+}
+
+/* Circle that moves when the toggle is checked */
+.container .moving_circle::after {
+    content: "";
+    position: absolute;
+    top: 3px;
+    left: 3px;
+    width: 24px;
+    height: 24px;
+    background-color: white;
+    border-radius: 50%;
+    transition: transform 0.3s; /* Smooth movement of the circle */
+}
+
+.container input:checked + .moving_circle {
+    background-color: #4CAF50; /* Green when ON */
+}
+
+.container input:checked + .moving_circle::after {
+    transform: translateX(20px); /* Move the circle to the right */
+}
+
+/* Tablet Responsive Adjustments */
+@media (max-width: 1024px) and (min-width: 768px) {
+    .item .info-box {
+        left: 4%;
+        height: auto;
+        width: auto;
+        margin-top: 20%;
+    }
+
+    .info-item h2 {
+        font-size: 5rem;
+    }
+
+    .info-item p {
+        font-size: 2rem;
+    }
+
+    .item .img-box {
+        left: 50%;
+        width: 50%;
+        top: 28%;
+    }
+
+    .menu li {
+        width: 70px;
+        height: 70px;
+    }
+
+    .circle-bg {
+        left: 50%;
+        width: 800px;
+        height: 800px;
+        top: 10%;
+    }
+
+    .clouds {
+        .cloud1 {
+            left: 60%;
+            top: 20%;
+            width: 350px;
+            rotate: -5deg;
+        }
+
+        .cloud2 {
+            left: 4%;
+            top: 25%;
+            width: 250px;
+            rotate: -8deg;
+        }
+
+        .cloud3 {
+            left: 15%;
+            width: 200px;
+            rotate: 8deg;
+        }
+    }
+    
+    .modal {
+        width: 95%;
+        height: 80%;
+        padding: 1px;
+    }
+
+    .modal-content h2 {
+        font-size: 40px;
+        margin-bottom: 15px;
+    }
+
+    .close {
+        font-size: 50px;
+    }
+
+    .box {
+        padding: 10px;
+        
+        h3 {
+            font-size: 15px;
+        }
+    }
+
+    .large-box-1, .large-box-2{
+        width: 50%;
+        height: 330px;
+    }
+
+    .small-box {
+        width: 200px;
+        height: 250px;
+    }
+
+    .box-image {
+        height: auto;
+        width: 150px;
+    }
+
+    .box-content {
+        gap: 5px;
+    }
+
+     /* Adjust the label and button size */
+     label {
+        width: 50px; /* Smaller toggle for tablets */
+        height: 30px; /* Adjusted height */
+    }
+
+    .moving_circle {
+        width: 30px; /* Smaller circle for the toggle */
+        height: 30px;
+    }
+
+    .box-content {
+        gap: 10px; /* Reduce space between toggle and button on tablets */
+    }
+    .modal1 {
+        width: 95%;
+        height: 80%;
+        padding: 1px;
+    }
+    .modal-content1 h2 {
+        font-size: 3rem; /* Even smaller title for mobile */
+    }
+    
+    .modal-content1 p {
+        font-size: 1rem; /* Even smaller paragraph text for mobile */
+    }
+    
+    .modal-content1 ul li {
+        font-size: 1.1rem; /* Even smaller list items for mobile */
+    }
+    .modal-content1 p:last-child {
+        font-size: 1.5rem;
+    }
+    .close1 {
+        font-size: 50px;
+    }
+}
+
+
+/* Mobile Responsive Adjustments */
+@media (max-width: 767px) {
+    .grid-container {
+        padding: 5px;
+        margin-top: -30px;
+    }
+
+    .item .info-box {
+        left: 2%;
+        height: auto;
+        width: auto;
+        margin-top: 50%;
+    }
+
+    .info-item {
+        h2 {
+            font-size: 4rem;
+        }
+        p {
+            font-size: 1.5rem;
+        }
+    }
+
+    .item .img-box {
+        left: 50%;
+        height: 70%;
+        width: 70%;
+        top: 35%;
+    }
+    .menu li {
+        width: 50px;
+        height: 50px;
+        align-items: center;      /* Center vertically */
+    }
+    
+    .menu li i {
+        font-size: 15px; /* Default icon size */
+    }
+
+    .circle-bg {
+        left: 20%;
+        width: 600px;
+        height: 600px;
+        top: 33%;
+    }
+
+    .clouds {
+        .cloud1 {
+            left: 60%;
+            top: 35%;
+            width: 150px;
+            rotate: -3deg;
+        }
+
+        .cloud2 {
+            left: 5%;
+            top: 50%;
+            width: 150px;
+            rotate: -6deg;
+        }
+
+        .cloud3 {
+            left: 5%;
+            width: 150px;
+            rotate: 5deg;
+        }
+    }
+    
+    .modal {
+        width: 90%;
+        height: 90%;
+        padding: 10px;
+    }
+
+    .modal-content h2 {
+        font-size: 35px;
+        margin-bottom: 10px;
+    }
+
+    .close {
+        top: 2%;
+        font-size: 50px;
+    }
+
+    .box {
+        padding: 5px;
+        
+        h3 {
+            font-size: 12px;
+            padding: 3px 0;
+        }
+    }
+
+    .large-box-container {
+        flex-direction: column;
+        align-items: center;
+        margin-top: 20px;
+    }
+
+    .large-box-1, .large-box-2 {
+        width: 90%;
+        height: 180px;
+        margin: 5px 0;
+    }
+
+    .small-box-container {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+        width: 90%;
+        margin: -10px auto 0;
+    }
+
+    .small-box {
+        width: 100%;
+        height: 150px;
+        margin: 5px;
+    }
+
+    .box-content {
+        gap: 8px;
+    }
+
+    .box-image {
+        height: auto;
+        width: 80px;
+    }
+
+    .container {
+        width: 32px;
+        height: 20px;
+
+        .moving_circle {
+            width: 32px;
+            height: 20px;
+
+            &::after {
+                width: 14px;
+                height: 14px;
+                top: 3px;
+                left: 3px;
+            }
+        }
+
+        input:checked + .moving_circle::after {
+            transform: translateX(12px);
+        }
+    }
+
+    .modal-content1 h2 {
+        font-size: 1rem; /* Even smaller title for mobile */
+    }
+    
+    .modal-content1 p {
+        font-size: 0.7rem; /* Even smaller paragraph text for mobile */
+    }
+    
+    .modal-content1 ul li {
+        font-size: 0.8rem; /* Even smaller list items for mobile */
+    }
+    .modal-content1 p:last-child {
+        font-size: 0.9rem;
+    }
+    .close1 {
+        top: -1.5%;
+        font-size: 50px;
+    }
+}
+
+/* Small Mobile Adjustments */
+@media (max-width: 480px) {
+    .box-image {
+        width: 70px;
+    }
+
+    .box h3 {
+        font-size: 10px;
+    }
+
+    .large-box-1, .large-box-2 {
+        width: 95%;
+    }
+
+    .small-box {
+        height: 130px;
+    }
+}
