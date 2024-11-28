@@ -33,7 +33,7 @@
 
 ## Screenshots
 - test pa lang
-![Dashboard](screenshots/dashboard.png)
+![Dashboard](assets/Dashboard.png)
 ![Lighting Control](screenshots/lighting-control.png)
 
 ## Contributing
