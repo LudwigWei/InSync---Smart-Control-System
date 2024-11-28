@@ -32,9 +32,8 @@
 ## Technologies Used
 
 ## Screenshots
-- test pa lang
 ![Dashboard](assets/Dashboard.png)
-![Lighting Control](screenshots/lighting-control.png)
+![Lighting Control](assets/lightcontrol.png)
 
 ## Contributing
 
