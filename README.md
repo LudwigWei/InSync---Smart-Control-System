@@ -23,11 +23,11 @@
 ## Key Features
 
 ## Usage
-- test pa lang
-- Open the dashboard by navigating to ``.
-- Sign up for an account or log in.
-- Use the main navigation menu to access different sections (Lighting, Climate, Security, etc.).
-- Configure devices by selecting options from each section.
+-Open the dashboard by clicking the menu icon in the bottom navigation bar.
+-Sign up for an account or log in to personalize your experience.
+-Use the main navigation menu to explore sections like Smart Lamp, Smart Fan, Speaker, and Thermometer.
+-Control devices by toggling their switches or selecting specific options from their dedicated sections.
+-View analytics such as Monthly Electric Consumption to track usage patterns.
 
 ## Technologies Used
 
