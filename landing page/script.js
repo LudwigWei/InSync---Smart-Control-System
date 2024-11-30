@@ -1,5 +1,6 @@
 import { getDatabase, ref, set } from "https://www.gstatic.com/firebasejs/9.0.0/firebase-database.js";
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.0.0/firebase-app.js";
+import { getAuth, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/9.0.0/firebase-auth.js";
 
 // Firebase Configuration
 const firebaseConfig = {
@@ -15,6 +16,40 @@ const firebaseConfig = {
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const realtimeDb = getDatabase(app);
+const auth = getAuth(app);
+
+// Check authentication status
+function checkAuthentication() {
+    const isLoggedIn = sessionStorage.getItem('isLoggedIn') === 'true';
+    if (!isLoggedIn) {
+        window.location.replace('../login page/index.html');
+        return false;
+    }
+    return true;
+}
+
+// Prevent back button and enforce authentication
+function setupSecurityMeasures() {
+    // Handle back button with confirmation dialog
+    history.pushState(null, null, location.href);
+    window.onpopstate = function () {
+        if (confirm('Are you sure you want to go back to login page?')) {
+            window.location.replace('../login page/index.html');
+        } else {
+            history.pushState(null, null, location.href);
+        }
+    };
+
+    // Check authentication on page load
+    if (!checkAuthentication()) return;
+
+    // Continuously check authentication
+    setInterval(checkAuthentication, 5000);
+}
+
+// Prevent going back to login page
+// window.location.hash="no-back-button";
+// window.onhashchange=function(){window.location.hash="no-back-button";}
 
 const next = document.querySelector("#next");
 const infoSliders = document.querySelectorAll('.info-slider');
@@ -186,6 +221,9 @@ function updateCarousel() {
 }
 
 document.addEventListener("DOMContentLoaded", function() {
+    // Setup security first
+    setupSecurityMeasures();
+
     // Function to update the date and time
     function updateDateTime() {
         console.log('Attempting to update dateTime element...');
@@ -345,6 +383,49 @@ document.addEventListener("DOMContentLoaded", function() {
     if (closeButton) {
         closeButton.addEventListener("click", () => {
             modal.style.display = "none"; // Hide modal
+        });
+    }
+
+    // Check authentication state on page load and when it changes
+    function checkAuth() {
+        onAuthStateChanged(auth, (user) => {
+            if (!user) {
+                // No user is signed in, redirect to login page
+                window.location.href = '../login page/index.html';
+            }
+        });
+    }
+
+    // Prevent going back to this page after logout
+    window.onpopstate = function() {
+        window.history.pushState(null, null, window.location.href);
+        checkAuth();
+    };
+
+    // Initialize auth check
+    checkAuth();
+    
+    // Setup logout button
+    const logoutBtn = document.getElementById('logoutBtn');
+    if (logoutBtn) {
+        logoutBtn.addEventListener('click', async () => {
+            try {
+                await signOut(auth);
+                // Clear any stored credentials
+                sessionStorage.clear();
+                localStorage.clear();
+                
+                // Disable back button functionality
+                window.history.forward();
+                window.onpopstate = function(event) {
+                    window.history.forward();
+                };
+                
+                // Redirect to login page
+                window.location.replace('../login page/index.html');
+            } catch (error) {
+                console.error('Error signing out:', error);
+            }
         });
     }
 });

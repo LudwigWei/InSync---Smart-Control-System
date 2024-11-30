@@ -19,6 +19,15 @@ const auth = getAuth(app);
 const db = getFirestore(app);
 const realtimeDb = getDatabase(app);
 
+// Clear any existing session on login page load
+sessionStorage.clear();
+
+// Prevent back navigation
+history.pushState(null, null, location.href);
+window.onpopstate = function () {
+    history.pushState(null, null, location.href);
+};
+
 // Initialize providers
 const googleProvider = new GoogleAuthProvider();
 
@@ -56,10 +65,40 @@ function hideLoading() {
     loadingSpinner.style.display = 'none';
 }
 
+// Notification System
+const notification = document.getElementById('notification');
+const notificationMessage = notification.querySelector('.notification-message');
+const notificationClose = notification.querySelector('.notification-close');
+
+function showNotification(message, type) {
+    console.log('Showing notification:', message, type); // Debug log
+    if (!notification || !notificationMessage) {
+        console.error('Notification elements not found!');
+        return;
+    }
+    notificationMessage.textContent = message;
+    notification.className = `notification ${type}`;
+    notification.style.display = 'block';
+    
+    // Auto hide after 3 seconds
+    setTimeout(hideNotification, 3000);
+}
+
+function hideNotification() {
+    if (notification) {
+        notification.style.display = 'none';
+    }
+}
+
+// Add event listener for close button
+if (notificationClose) {
+    notificationClose.addEventListener('click', hideNotification);
+}
+
 // Helper function to handle errors
 function handleError(error, context = "") {
     console.error(`${context} Error:`, error);
-    alert(`${context} Error: ${error.message}`);
+    showNotification(`${context} Error: ${error.message}`, 'error');
 }
 
 // Email Validation
@@ -71,11 +110,11 @@ function isValidEmail(email) {
 // Form Validation for Sign-Up
 function validateSignUp(email, password) {
     if (!email || !password) {
-        alert("Email and Password cannot be empty.");
+        showNotification("Email and Password cannot be empty.", 'error');
         return false;
     }
     if (!isValidEmail(email)) {
-        alert("Please enter a valid email address.");
+        showNotification("Please enter a valid email address.", 'error');
         return false;
     }
     return true;
@@ -84,50 +123,69 @@ function validateSignUp(email, password) {
 // Form Validation for Sign-In
 function validateSignIn(email, password) {
     if (!email || !password) {
-        alert("Email and Password cannot be empty.");
+        showNotification("Email and Password cannot be empty.", 'error');
         return false;
     }
     if (!isValidEmail(email)) {
-        alert("Please enter a valid email address.");
+        showNotification("Please enter a valid email address.", 'error');
         return false;
     }
     return true;
 }
 
+// Delay function using Promise
+function delay(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+// Helper function to handle successful login
+async function handleSuccessfulLogin(user) {
+    try {
+        // Set session storage
+        sessionStorage.setItem('isLoggedIn', 'true');
+        sessionStorage.setItem('userEmail', user.email);
+        
+        // Show success message
+        showNotification('Login successful! Redirecting...', 'success');
+        await delay(1000);
+        
+        // Redirect to home page
+        window.location.replace('../landing page/home.html');
+    } catch (error) {
+        handleError(error, 'Login success handler');
+    }
+}
+
+// Sign in with email/password
+signInForm.addEventListener('submit', async (event) => {
+    event.preventDefault();
+    showLoading();
+
+    const email = emailInputSignIn.value;
+    const password = passwordInputSignIn.value;
+
+    try {
+        if (validateSignIn(email, password)) {
+            const userCredential = await signInWithEmailAndPassword(auth, email, password);
+            await handleSuccessfulLogin(userCredential.user);
+        }
+    } catch (error) {
+        handleError(error, 'Sign in');
+    } finally {
+        hideLoading();
+    }
+});
+
 // Google Sign-In
 googleSignInIcon.addEventListener('click', async (event) => {
     event.preventDefault();
     showLoading();
+
     try {
         const result = await signInWithPopup(auth, googleProvider);
-        const user = result.user;
-        console.log("Google sign-in successful:", user);
-
-        const userDoc = await getDoc(doc(db, "users", user.uid));
-        if (userDoc.exists()) {
-            alert("You are already registered. Redirecting to home...");
-            window.location.href = "../landing page/home.html";
-             
-            
-        } else {
-            await setDoc(doc(db, "users", user.uid), {
-                email: user.email,
-                signUpDate: new Date(),
-                provider: "Google"
-            });
-            
-            // Store user data in Realtime Database
-            await set(ref(realtimeDb, 'users/' + user.uid), {
-                email: user.email,
-                signUpDate: new Date().toISOString(),
-                provider: "Google"
-            });
-
-            alert("Google account successfully registered! Please sign in to continue.");
-            loginBtn.click();
-        }
+        await handleSuccessfulLogin(result.user);
     } catch (error) {
-        handleError(error, "Google sign-in");
+        handleError(error, 'Google sign in');
     } finally {
         hideLoading();
     }
@@ -150,8 +208,8 @@ signUpForm.addEventListener('submit', async (event) => {
         console.log("User signed up:", user);
 
         await setDoc(doc(db, "users", user.uid), {
-            email: user.email,
-            signUpDate: new Date(),
+            email: email,
+            signUpDate: new Date().toISOString()
         });
 
         // Store user data in Realtime Database
@@ -160,48 +218,13 @@ signUpForm.addEventListener('submit', async (event) => {
             signUpDate: new Date().toISOString()
         });
 
-        alert('Sign up successful! Automatically logged in.');
+        hideLoading();
+        await handleSuccessfulLogin('Sign up successful! Automatically logged in.');
 
         // Log in the user automatically after sign-up
         await signInWithEmailAndPassword(auth, email, password);
-        window.location.href = "../landing page/home.html"; // Redirect after sign-in
-        window.location.reload(); // Reload the page to reset the state
     } catch (error) {
+        hideLoading();
         handleError(error, "Sign-up");
-    } finally {
-        hideLoading();
-    }
-});
-
-// Sign-In event listener
-signInForm.addEventListener('submit', async (event) => {
-    event.preventDefault();
-    const email = emailInputSignIn.value;
-    const password = passwordInputSignIn.value;
-
-    if (!validateSignIn(email, password)) {
-        return; // Prevent submitting if validation fails
-    }
-
-    showLoading();
-    try {
-        const userCredential = await signInWithEmailAndPassword(auth, email, password);
-        const user = userCredential.user;
-
-        // Retrieve user data from Realtime Database
-        const userRef = ref(realtimeDb, 'users/' + user.uid);
-        const userSnapshot = await get(userRef);
-        if (userSnapshot.exists()) {
-            console.log('Realtime Database User data:', userSnapshot.val());
-        } else {
-            console.warn("No user data found in Realtime Database");
-        }
-
-        alert('Sign-in successful!');
-        window.location.href = "../landing page/home.html"; // Redirect after sign-in
-    } catch (error) {
-        handleError(error, "Sign-in");
-    } finally {
-        hideLoading();
     }
 });

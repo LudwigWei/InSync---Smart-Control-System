@@ -1,6 +1,36 @@
 /* Import Google Fonts - Roboto for main typography */
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
 
+
+.logout-btn {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background-color: transparent;
+    color: #000;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+    transition: all 0.2s ease;
+    z-index: 1000;
+}
+
+.logout-btn i {
+    font-size: 20px;
+}
+
+.logout-btn span {
+    font-size: 12px;
+    font-weight: 500;
+}
+
+.logout-btn:hover {
+    color: #ff4757;
+    transform: scale(1.1);
+}
 /* Reset default styles */
 * {
     margin: 0;
