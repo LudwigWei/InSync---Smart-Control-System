@@ -1,4 +1,4 @@
-import { getDatabase, ref, set } from "https://www.gstatic.com/firebasejs/9.0.0/firebase-database.js";
+import { getDatabase, ref, set, onValue, get } from "https://www.gstatic.com/firebasejs/9.0.0/firebase-database.js";
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.0.0/firebase-app.js";
 import { getAuth, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/9.0.0/firebase-auth.js";
 
@@ -224,8 +224,107 @@ document.addEventListener("DOMContentLoaded", function() {
     // Setup security first
     setupSecurityMeasures();
 
-    // Function to update the date and time
+    // Function to update sensor values
+    function updateSensorValues(snapshot) {
+        const data = snapshot.val();
+        if (data) {
+            try {
+                // Update sound value only if speaker switch is ON
+                const soundValue = document.getElementById('sound-value');
+                if (soundValue && data.sound !== undefined) {
+                    if (speakerSwitch && speakerSwitch.checked) {
+                        soundValue.textContent = data.sound + " dB";
+                    } else {
+                        soundValue.textContent = "- dB";
+                    }
+                }
+
+                // Update temperature value only if thermometer switch is ON
+                const tempValue = document.getElementById('temp-value');
+                if (tempValue && data.temperature !== undefined) {
+                    if (thermometerSwitch && thermometerSwitch.checked) {
+                        tempValue.textContent = `${data.temperature}°C`;
+                    } else {
+                        tempValue.textContent = "-°C";
+                    }
+                }
+
+                // Update humidity value
+                const humidityValue = document.getElementById('humidity-value');
+                if (humidityValue && data.humidity !== undefined) {
+                    humidityValue.textContent = `${data.humidity}%`;
+                }
+            } catch (error) {
+                console.error("Error updating sensor values:", error);
+            }
+        }
+    }
+
+    // Initialize database reference for sensors
+    const sensorRef = ref(realtimeDb, 'sensors');
+
+    // Function to initialize sensor values if they don't exist
+    async function initializeSensorValues() {
+        try {
+            const snapshot = await get(ref(realtimeDb, 'sensors'));
+            const data = snapshot.val();
+            
+            // Create or update the entire sensors object
+            const sensorData = {
+                sound: "",
+                temperature: data?.temperature || "",
+                humidity: data?.humidity || ""
+            };
+            
+            await set(ref(realtimeDb, 'sensors'), sensorData);
+            console.log('Sensor values initialized in database');
+        } catch (error) {
+            console.error('Error initializing sensor values:', error);
+        }
+    }
+
+    // Initialize sensor values immediately
+    initializeSensorValues();
+
+    // Set up real-time listener for all sensor data
+    onValue(sensorRef, (snapshot) => {
+        updateSensorValues(snapshot);
+    }, (error) => {
+        console.error("Error setting up sensor listener:", error);
+    });
+
+    // Function to update sound value
+    async function updateSound(value) {
+        try {
+            await set(ref(realtimeDb, 'sensors/sound'), value);
+            console.log('Sound value updated successfully');
+        } catch (error) {
+            console.error('Error updating sound value:', error);
+        }
+    }
+
+    // Update date and time every second
     function updateDateTime() {
+        const dateTimeElement = document.getElementById('dateTime');
+        const now = new Date();
+        const options = { 
+            weekday: 'long', 
+            year: 'numeric', 
+            month: 'long', 
+            day: 'numeric',
+            hour: '2-digit',
+            minute: '2-digit',
+            second: '2-digit'
+        };
+        dateTimeElement.textContent = now.toLocaleDateString('en-US', options);
+    }
+
+    // Update date/time immediately and then every second
+    updateDateTime();
+    setInterval(updateDateTime, 1000);
+
+    // Function to update the date and time
+    function updateDateTimeOld() {
         console.log('Attempting to update dateTime element...');
         const dateTimeElement = document.getElementById('dateTime');
         if (dateTimeElement) {
@@ -243,8 +342,8 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 
     // Ensure the page is fully loaded before starting the time update
-    updateDateTime(); // Initialize date and time immediately on page load
-    setInterval(updateDateTime, 1000); // Update every second
+    updateDateTimeOld(); // Initialize date and time immediately on page load
+    setInterval(updateDateTimeOld, 1000); // Update every second
 
     // Ensure the modal is hidden on page load
     if (modal) {
@@ -337,6 +436,10 @@ document.addEventListener("DOMContentLoaded", function() {
                     if (speakerLabel) {
                         speakerLabel.textContent = isOn ? "ON" : "OFF";
                     }
+                    // Trigger sensor values update
+                    get(ref(realtimeDb, 'sensors')).then((snapshot) => {
+                        updateSensorValues(snapshot);
+                    });
                 })
                 .catch((error) => {
                     console.error("Firebase update failed:", error);
@@ -362,6 +465,10 @@ document.addEventListener("DOMContentLoaded", function() {
                     if (thermometerLabel) {
                         thermometerLabel.textContent = isOn ? "ON" : "OFF";
                     }
+                    // Trigger sensor values update
+                    get(ref(realtimeDb, 'sensors')).then((snapshot) => {
+                        updateSensorValues(snapshot);
+                    });
                 })
                 .catch((error) => {
                     console.error("Firebase update failed:", error);
@@ -372,26 +479,23 @@ document.addEventListener("DOMContentLoaded", function() {
         console.error("Thermometer switch element not found in DOM!");
     }
 
-    // Show the modal when dashboard button is clicked
-    if (dashboardButton) {
-        dashboardButton.addEventListener("click", () => {
-            modal.style.display = "block"; // Show modal
-        });
-    }
-
-    // Close the modal when the close button is clicked
-    if (closeButton) {
-        closeButton.addEventListener("click", () => {
-            modal.style.display = "none"; // Hide modal
-        });
-    }
-
     // Check authentication state on page load and when it changes
     function checkAuth() {
         onAuthStateChanged(auth, (user) => {
             if (!user) {
                 // No user is signed in, redirect to login page
                 window.location.href = '../login page/index.html';
+            } else {
+                // Initialize sensors data in Firebase when user is authenticated
+                const sensorsRef = ref(realtimeDb, 'sensors');
+                set(sensorsRef, {
+                    humidity: "",
+                    temperature: ""
+                }).then(() => {
+                    console.log("Sensors data structure initialized successfully");
+                }).catch((error) => {
+                    console.error("Error initializing sensors data:", error);
+                });
             }
         });
     }

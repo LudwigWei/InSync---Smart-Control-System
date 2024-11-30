@@ -934,3 +934,121 @@ html, body {
         height: 130px;
     }
 }
+
+/* Styles for Large Box 2 sensor display */
+.box-header {
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+    padding: 8px;
+    position: relative;  /* Changed to relative */
+    margin-bottom: 15px;
+}
+
+.date-time-display {
+    font-size: 1.1em;
+    color: #ffffff;
+    font-weight: 500;
+    justify-content: flex-end;
+    padding: 8px 15px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 5px;
+}
+
+.sensor-data {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+    padding: 15px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    width: 90%;
+    margin: 0 auto;
+}
+
+.sensor-item {
+    text-align: center;
+    padding: 15px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 8px;
+}
+
+.sensor-label {
+    display: block;
+    font-weight: 500;
+    margin-bottom: 10px;
+    color: #ffffff;
+    font-size: 1.1em;
+}
+
+.sensor-value {
+    display: block;
+    color: #e0e0e0;
+    font-size: 1.3em;
+    font-weight: 600;
+}
+
+/* Responsive styles */
+@media screen and (max-width: 768px) {
+    .box-header {
+        padding: 5px;
+        margin-bottom: 10px;
+    }
+
+    .date-time-display {
+        font-size: 0.9em;
+        padding: 6px 10px;
+    }
+
+    .sensor-data {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+        padding: 10px;
+        width: 95%;
+    }
+
+    .sensor-item {
+        padding: 10px;
+    }
+
+    .sensor-label {
+        font-size: 0.9em;
+        margin-bottom: 8px;
+    }
+
+    .sensor-value {
+        font-size: 1.1em;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .box-header {
+        justify-content: center;
+        margin-bottom: 8px;
+    }
+
+    .date-time-display {
+        font-size: 0.85em;
+        padding: 5px 8px;
+    }
+
+    .sensor-data {
+        grid-template-columns: 1fr;
+        gap: 8px;
+        padding: 8px;
+        width: 100%;
+    }
+
+    .sensor-item {
+        padding: 8px;
+    }
+
+    .sensor-label {
+        font-size: 0.85em;
+        margin-bottom: 6px;
+    }
+
+    .sensor-value {
+        font-size: 1em;
+    }
+}
