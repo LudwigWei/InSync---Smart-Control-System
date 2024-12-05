@@ -99,6 +99,17 @@ function resetNextButtonColor() {
     next.style.backgroundColor = "transparent"; // Reset to transparent
 }
 
+// Function to update dashboard text color based on current circle background
+function updateDashboardText() {
+    const circleBg = items[index].querySelector('.circle-bg');
+    const computedStyle = getComputedStyle(circleBg);
+    const dashboardTitle = document.querySelector('.modal-content h2');
+    
+    if (dashboardTitle) {
+        dashboardTitle.style.color = computedStyle.backgroundColor;
+    }
+}
+
 // Next button click event
 if (next) {
     next.addEventListener("click", () => {
@@ -135,6 +146,7 @@ if (dashboardButton) {
             modal1.style.display = "none"; // Hide other modal
             highlightButton(dashboardButton);
             resetNextButtonColor();
+            updateDashboardText(); // Update dashboard text color when modal opens
         }
     });
 }
@@ -218,6 +230,9 @@ function updateCarousel() {
     document.querySelectorAll('.small-box, .large-box, .large-box-1, .large-box-2').forEach(box => {
         box.style.backgroundColor = activeColor; // Apply the color of the circleBg to each box
     });
+
+    // Update dashboard text color
+    updateDashboardText();
 }
 
 document.addEventListener("DOMContentLoaded", function() {
