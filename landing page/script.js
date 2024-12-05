@@ -286,9 +286,9 @@ document.addEventListener("DOMContentLoaded", function() {
             
             // Create or update the entire sensors object
             const sensorData = {
-                sound: "",
-                temperature: data?.temperature || "",
-                humidity: data?.humidity || ""
+                sound: 0,
+                temperature: data?.temperature || 0,
+                humidity: data?.humidity || 0
             };
             
             await set(ref(realtimeDb, 'sensors'), sensorData);
@@ -504,8 +504,8 @@ document.addEventListener("DOMContentLoaded", function() {
                 // Initialize sensors data in Firebase when user is authenticated
                 const sensorsRef = ref(realtimeDb, 'sensors');
                 set(sensorsRef, {
-                    humidity: "",
-                    temperature: ""
+                    humidity: 0,
+                    temperature: 0
                 }).then(() => {
                     console.log("Sensors data structure initialized successfully");
                 }).catch((error) => {
