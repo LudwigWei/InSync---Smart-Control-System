@@ -947,6 +947,7 @@ html, body {
 
 .date-time-display {
     font-size: 1.1em;
+    font-family: 'Roboto', sans-serif;
     color: #ffffff;
     font-weight: 500;
     justify-content: flex-end;
@@ -975,6 +976,7 @@ html, body {
 
 .sensor-label {
     display: block;
+    font-family: 'Roboto', sans-serif;
     font-weight: 500;
     margin-bottom: 10px;
     color: #ffffff;
@@ -983,6 +985,7 @@ html, body {
 
 .sensor-value {
     display: block;
+    font-family: 'Roboto', sans-serif;
     color: #e0e0e0;
     font-size: 1.3em;
     font-weight: 600;
