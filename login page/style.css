@@ -46,7 +46,7 @@ body{
 }
 
 .container button{
-    background-color:  #FFC5D3;
+    background-color:  #6CAFA3;
     color: black;
     font-size: 12px;
     padding: 10px 45px;
@@ -160,7 +160,7 @@ body{
 }
 
 .toggle{
-    background-color: #FFC5D3;
+    background-color: #6CAFA3;
     height: 100%;
     color: black;
     position: relative;
