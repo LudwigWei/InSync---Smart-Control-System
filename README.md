@@ -21,6 +21,33 @@
 **InSync - Smart Control System** is a user-friendly platform that enables seamless management of smart home devices through a web interface. It allows users to monitor and control various devices like lighting, door locks, climate control, and air quality sensors. With a focus on intuitive design, real-time device control, and responsive automation, InSync simplifies the integration and management of smart home systems, offering a streamlined user experience.
 
 ## Key Features
+### 🎛️ Device Control & Monitoring
+- Real-time control of multiple smart home devices
+- Instant device status updates and monitoring
+- Support for various device types (lights, speakers, fans, humidity and air quality sensors)
+- Unified dashboard for centralized device management
+
+### 🔐 Security & Access Control
+- Secure user authentication and authorization
+- Device activity logging and history tracking
+- Secure communication protocols
+
+### 📱 User Experience
+- Intuitive and responsive web interface
+- Mobile-friendly design
+- Real-time notifications and alerts
+- Customizable dashboard layouts
+
+### 📊 Data Analytics
+- Device usage statistics and trends
+- Energy consumption monitoring
+- Performance analytics and reports
+
+### ⚡ System Performance
+- Low-latency device communication
+- Scalable architecture
+- Reliable device connectivity
+- Efficient data handling and storage
 
 ## Usage
 - Open the dashboard by clicking the menu icon in the bottom navigation bar.
@@ -30,6 +57,25 @@
 - View analytics such as Monthly Electric Consumption to track usage patterns.
 
 ## Technologies Used
+### Frontend
+- **HTML5**: Structure and content of the web application
+- **CSS3**: Styling and responsive design
+- **JavaScript**: Client-side functionality and interactivity
+- **Chart.js**: Data visualization for analytics and monitoring
+
+### Backend & Database
+- **Firebase**: Real-time database and authentication services
+
+### IoT & Hardware
+- **Arduino**: Microcontroller programming for smart device control
+- **C++**: Programming language for Arduino development
+- **Sensors**: Various IoT sensors for environmental monitoring and device control
+
+### Design & Development Tools
+- **Figma**: UI/UX design and prototyping
+- **Git**: Version control system
+- **GitHub**: Code repository and collaboration platform
+- **VS Code**: Code editor and development environment
 
 ## Screenshots
 ![Dashboard](assets/Dashboard.png)
@@ -63,40 +109,66 @@ Thank you for contributing to the success of **InSync**!
 
 ## About the Developers
 
-<table style="width: 100%; text-align: center; border-collapse: collapse; table-layout: fixed;">
+<div align="center">
+
+<table align="center" style="border-collapse: separate; border-spacing: 20px; width: 100%; max-width: 1200px; margin: 0 auto;">
   <tr>
-    <td style="border: 1px solid #ccc; border-radius: 10px; vertical-align: top; width: 33.33%;">
-      <h3>PROJECT MANAGER</h3>
-      <p><strong>Louis Vincent A. Crisaldo</strong></p>
-      <p>Oversees the project and coordinates<br> the development. Works on both frontend and backend tasks to integrate systems and ensure a seamless user experience.</p>
-      <p><strong>Contact:</strong></p>
-      <ul style="list-style: none; padding: 0;">
-        <li>22-00717@g.batstate-u.edu.ph</li>
-        <li>GitHub: <a href="https://github.com/LudwigWei" target="_blank">LudwigWei</a></li>
-      </ul>
+    <td align="center" style="background: #f8f9fa; border-radius: 16px; padding: 25px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
+      <img src="https://github.com/LudwigWei.png" width="150" height="150" style="border-radius: 50%;">
+      <h3 style="color: #2f80ed; margin: 15px 0;">PROJECT MANAGER</h3>
+      <h4>Louis Vincent A. Crisaldo</h4>
+      <p style="color: #666; line-height: 1.6;">
+        Oversees the project and coordinates the development. Works on both frontend and backend tasks to integrate systems and ensure a seamless user experience.
+      </p>
+      <div style="margin-top: 15px;">
+        <a href="mailto:22-00717@g.batstate-u.edu.ph" style="text-decoration: none; color: #2f80ed;">
+          📧 22-00717@g.batstate-u.edu.ph
+        </a>
+        <br>
+        <a href="https://github.com/LudwigWei" target="_blank" style="text-decoration: none; color: #2f80ed;">
+          💻 GitHub: @LudwigWei
+        </a>
+      </div>
     </td>
 
-  <td style="border: 1px solid #ccc; border-radius: 10px; padding: 20px; vertical-align: top; width: 33.33%;">
-      <h3>FRONTEND DEVELOPER</h3>
-      <p><strong>Christian Kriel M. Quejada</strong></p>
-      <p>Responsible for designing and<br>implementing the user interface (UI) and user experience (UX), ensuring the platform is responsive and visually appealing across devices.</p>
-     <p><strong>Contact:</strong></p>
-      <ul style="list-style: none; padding: 0;">
-        <li>22-05358@g.batstate-u.edu.ph</li>
-        <li>GitHub: <a href="https://github.com/kary3l" target="_blank">kary3l</a></li>
-      </ul>
+  <td align="center" style="background: #f8f9fa; border-radius: 16px; padding: 25px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
+      <img src="https://github.com/kary3l.png" width="150" height="150" style="border-radius: 50%;">
+      <h3 style="color: #2f80ed; margin: 15px 0;">FRONTEND DEVELOPER</h3>
+      <h4>Christian Kriel M. Quejada</h4>
+      <p style="color: #666; line-height: 1.6;">
+        Responsible for designing and implementing the user interface (UI) and user experience (UX), ensuring the platform is responsive and visually appealing across devices.
+      </p>
+      <div style="margin-top: 15px;">
+        <a href="mailto:22-05358@g.batstate-u.edu.ph" style="text-decoration: none; color: #2f80ed;">
+          📧 22-05358@g.batstate-u.edu.ph
+        </a>
+        <br>
+        <a href="https://github.com/kary3l" target="_blank" style="text-decoration: none; color: #2f80ed;">
+          💻 GitHub: @kary3l
+        </a>
+      </div>
     </td>
 
-  <td style="border: 1px solid #ccc; border-radius: 10px; padding: 20px; vertical-align: top; width: 33.33%;">
-      <h3>BACKEND DEVELOPER</h3>
-      <p><strong>Jeroein Lloyd P. Magno</strong></p>
-      <p>Handles server-side logic, database<br>management, builds APIs, optimizes performance, ensures system reliability, and implements scalable solutions for efficient data handling and processing.</p>
-     <p><strong>Contact:</strong></p>
-      <ul style="list-style: none; padding: 0;">
-        <li>22-04009@g.batstate-u.edu.ph</li>
-        <li>GitHub: <a href="https://github.com/JeroeinMagno" target="_blank">JeroeinMagno</a></li>
-      </ul>
+  <td align="center" style="background: #f8f9fa; border-radius: 16px; padding: 25px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
+      <img src="https://github.com/JeroeinMagno.png" width="150" height="150" style="border-radius: 50%;">
+      <h3 style="color: #2f80ed; margin: 15px 0;">BACKEND DEVELOPER</h3>
+      <h4>Jeroein Lloyd P. Magno</h4>
+      <p style="color: #666; line-height: 1.6;">
+        Handles server-side logic, database management, builds APIs, optimizes performance, ensures system reliability, and implements scalable solutions for efficient data handling and processing.
+      </p>
+      <div style="margin-top: 15px;">
+        <a href="mailto:22-04009@g.batstate-u.edu.ph" style="text-decoration: none; color: #2f80ed;">
+          📧 22-04009@g.batstate-u.edu.ph
+        </a>
+        <br>
+        <a href="https://github.com/JeroeinMagno" target="_blank" style="text-decoration: none; color: #2f80ed;">
+          💻 GitHub: @JeroeinMagno
+        </a>
+      </div>
     </td>
   </tr>
 </table>
+
+</div>
+
 
